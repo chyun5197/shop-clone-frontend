@@ -1,0 +1,779 @@
+.hanblank_50{
+    /*50->30으로 줄여놓음*/
+    position: relative;
+    width: 100%;
+    /*height: 50px;*/
+    display: block;
+    clear: both;
+}
+
+.headcategory-path{
+    /*overflow: hidden;*/
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.headcategory-path ol{
+    float: right;
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+    margin: 0;
+    padding: 0;
+}
+
+.headcategory-path ol li{
+    float: left;
+    padding: 0 0 0 12px;
+    margin: 0 0 0 8px;
+
+    color: #868686;
+    list-style: none;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+    font: 11px 'Nanum Gothic', 나눔고딕, Verdana, Dotum, AppleGothic, sans-serif;
+    letter-spacing: -.5px;
+
+    /*원래 30임*/
+    line-height: 20px;
+}
+
+.headcategory-path ol .category-path{
+    background: url("../../assets/ico_path.gif") no-repeat 0 5px;
+}
+
+.product-detail{
+    width: 950px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* detailArea */
+.detailArea{
+    padding: 0 0 0 0;
+    /*margin: 0;*/
+    /*display: block;*/
+    /*unicode-bidi: isolate*/
+}
+
+.detailArea:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.detailArea .imgArea{
+    position: relative;
+    width: 400px;
+    float: left;
+    padding-top: 10px;
+    margin-left: 0;
+
+}
+
+.detailArea .imgArea .keyImg{
+    width: 400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.detailArea .imgArea .keyImg .thumbnail{
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.detailArea .imgArea .keyImg .thumbnail img{
+    max-width: 400px;
+    width: 450px;
+    cursor: pointer;
+    border: 1px solid #eee;
+    vertical-align: top;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.detailArea .imgArea .controlline{
+    width: 400px;
+    height: 50px;
+    display: block;
+    background: #555555;
+    margin: 10px auto 7px;
+    border: 1px solid #e5e5e5;
+    padding: 0;
+    unicode-bidi: isolate;
+}
+
+.detailArea .imgArea .controlline .controll{
+    width: 110px;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.detailArea .imgArea .controlline .controll .prev{
+    float: left;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.detailArea .imgArea .controlline .controll .next{
+    float: right;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.detailArea .imgArea .controlline .controll a{
+    color: #ccc;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.detailArea .infoArea{
+    position: relative;
+    width: 520px;
+    float: right;
+    margin: 10px 0 0 0;
+    padding-top: 40px;
+    border-top: 1px solid #555;
+    background: #fff;
+    display: block;
+    unicode-bidi: isolate;
+}
+.detailArea .infoArea .infoArea_in{
+    margin: 0;
+    padding: 0;
+}
+
+/*. detailArea .infoArea .infoArea_in */
+.headingArea{
+    position: relative;
+    padding: 0 0 10px;
+    margin: 0 0 15px;
+    line-height: 24px;
+    border-bottom: 0px solid #ddd;
+}
+.headingArea h2{
+    display: inline;
+    font-size: 23px;
+    line-height: 30px;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    color: #2e2e2e;
+
+    margin: 0;
+    padding: 0;
+
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.icon img{
+    cursor: auto;
+}
+
+.pricewrap {
+    width: 100%;
+    height: 80px;
+    display: block;
+    clear: both;
+    margin-top: 10px;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Noto Sans KR';
+    margin: 0;
+    padding: 0;
+}
+
+/*. pricewrap */
+.custom_de {
+    font-size: 34px;
+    font-weight: 500;
+    color: #2e2e2e;
+    margin-left: 0px;
+    float: left;
+}
+
+.custom_de span{
+    font-size: 21px;
+    font-weight: 700;
+    color: #2e2e2e;
+    font-family: 'Noto Sans KR';
+}
+
+.price_de{
+    font-size: 23px;
+    line-height: 60px;
+    font-weight: 400;
+    color: #bbb;
+    margin-left: 20px;
+    float: left;
+    text-decoration: line-through;
+    /*display: none;*/
+}
+
+.leftper {
+    position: relative;
+    left: 5px;
+    top: 13px;
+    z-index: 10;
+    float: left;
+    line-height: 37px;
+}
+
+.leftper .percent {
+    position: relative;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    text-indent: 2px;
+    font-size: 20px;
+    color: #bbb;
+}
+
+.leftper .percent .cost {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.9px;
+    color: #e10000;
+}
+
+.leftper .percent .mark {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    color: #e10000;
+    margin-left: 1px;
+}
+
+
+/*.product-detaildesign*/
+.product-detaildesign caption{
+    display: none;
+}
+.product-detaildesign table {
+    font-size: 12px;
+    margin: 15px 0 0;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+}
+
+product-detaildesign table tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-spacing: 0;
+}
+
+.infoArea th{
+    font-weight: normal;
+    color: #353535;
+    width: 115px;
+    padding: 9px 0 10px 4px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+product-detaildesign table tbody th{
+    display: table-cell;
+}
+
+.sqb {
+    width: 5px;
+    height: 5px;
+    float: left;
+    background: #343434;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.record{
+    font-size:13px;
+    color:#555555;
+
+}
+.product-detaildesign table, td, th{
+    border-right:none;
+    border-left:none;
+    border-top:none;
+    border-bottom:none;
+}
+
+/*guideArea*/
+.guideArea {
+    postion: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.guideArea .info{
+    margin: 7px 0 0;
+    padding: 8px 0 0 11px;
+    border-top: 1px solid #e8e8e8;
+    color: #757575;
+}
+
+.guideArea .totalProducts .info p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+/*totalProducts*/
+.totalProducts {
+    margin: 21px 0 0;
+    padding: 0;
+}
+
+.totalProducts table{
+    border: 0;
+    font-size: 12px;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+}
+
+.totalProducts table .col1{width:284px;}
+.totalProducts table .col2{width:80px;}
+.totalProducts table .col3{width:110px;}
+
+.totalProducts table tr > th{
+    display: none;
+    font-size: 12px;
+    vertical-align: inherit;
+}
+
+.totalProducts table tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+}
+
+.totalProducts tbody tr:first-child td{
+    border-top: 1px solid #9a9ba0;
+}
+
+.totalProducts tbody tr:first-child{
+    padding-left: 4px;
+}
+
+.totalProducts tbody td {
+    padding: 9px 0;
+    border-top: 1px solid #ebebeb;
+    color: #353535;
+    line-height: 18px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+
+    display: table-cell;
+    border: 0;
+}
+
+.totalProducts tbody td .quantity {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    vertical-align: top;
+}
+
+.totalProducts tbody td .quantity input {
+    width: 22px;
+    height: 23px;
+    padding: 0 2px 0 3px;
+    line-height: 23px;
+    border: 1px solid #d4d8d9;
+    border-radius: 3px 0 0 3px;
+    color: #353535;
+    font-family: "돋움", Dotum;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.totalProducts tbody td .quantity a{
+    text-decoration: none;
+    color: #000;
+}
+
+.quantityUp{
+    position: absolute;
+    left: 28px;
+    top: 0;
+}
+
+.quantityDown{
+    position: absolute;
+    left: 28px;
+    top: 12px;
+}
+
+.totalProducts table .right {
+    padding-right: 9px;
+    font-weight: bold;
+    color: #353535;
+    text-align: right;
+}
+
+
+.totalProducts tfoot td {
+    padding: 34px 9px 19px;
+    border-top: 1px solid #9a9ba0;
+    color: #353535;
+    vertical-align: middle;
+}
+
+.totalProducts tfoot td .total {
+    color: #e10000;
+}
+
+.totalProducts tfoot td .total em {
+    font-style: normal;
+    font-size: 34px;
+}
+
+
+/*product-action */
+.product-action {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    display: table;
+    padding: 20px 0 10px;
+}
+
+.product-action .btnArea{
+    overflow: hidden;
+    margin: 0 0 5px;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    /*padding: 0;*/
+    /*display: block;*/
+}
+
+.btnArea a {
+    text-decoration: none;
+    margin-left: .5%;
+    color: #333;
+    font-size: 15px;
+    text-transform: uppercase;
+    float: left;
+    width: 24%;
+    height: 50px;
+    border: 1px solid #ececec;
+    border-radius: 0px;
+    transition: .2s;
+    line-height: 50px;
+    font-weight: 600;
+    background: linear-gradient(to bottom, #eeeeee 0%, #eeeeee 100%);
+}
+
+.product-action .btnArea a.first {
+    text-decoration: none;
+    margin-left: 0;
+    color: #fff;
+    outline: none;
+    width: 49%;
+    background: linear-gradient(to bottom, #ff3019 0%, #ff3019 100%);
+}
+
+.displaynone {
+    display: none
+}
+
+/*middle*/
+.middle-blank{
+    width: 1px;
+    display: block;
+    clear: both;
+}
+
+
+/*center*/
+center {
+    display: block;
+    text-align: -webkit-center;
+    unicode-bidi: isolate;
+}
+
+center p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+center img{
+    border: none;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.product-additional{
+    padding: 20px 0px 60px;
+    color: #8f8f91;
+    line-height: 1.8em;
+    clear: both;
+    margin: 45px 0 0;
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.product-additional .posthan{
+    margin: 0;
+    padding: 0;
+}
+
+.product-additional .no-name{
+    width: 100%;
+    height: 10px;
+    display: block;
+}
+
+.product-additional .link{
+    height: 51px;
+    width: 100%;
+    zoom: 1;
+    margin-top: 10px;
+    border-bottom: 1px solid #111;
+}
+
+.product-additional .link ul{
+    height: 51px;
+    width: 760px;
+    margin: 0 auto;
+    display: block;
+
+    padding: 0;
+
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 100px;
+    unicode-bidi: isolate;
+
+}
+
+.product-additional .link li {
+    float: left;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
+    border-left: 0px solid #ddd;
+    text-align: center;
+    list-style: none;
+    display: list-item;
+}
+
+.product-additional .link li.selected {
+    height: 50px;
+    line-height: 50px;
+    background: #fcfcfc;
+    border: 1px solid #111;
+    border-bottom: 1px solid #fff;
+    margin-top: 0px;
+}
+
+.product-additional .link li.selected a {
+    color: #111;
+    font-size: 14px;
+}
+
+/*naver pay*/
+/*.npay_btn_item {*/
+/*    box-sizing:content-box;*/
+/*}*/
+
+/*.npay_type_A_2 {*/
+/*    width: 285px !important;*/
+/*    height: 88px !important;*/
+/*}*/
+
+/*.npay_storebtn_bx {*/
+/*    display: inline-block !important;*/
+/*    overflow: hidden !important;*/
+/*    float: none !important;*/
+/*    position: static !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 0 !important;*/
+/*    border: 0 none !important;*/
+/*    font-size: 12px !important;*/
+/*    line-height: 16px !important;*/
+/*    font-family: '돋움', Dotum, Helvetica, sans-serif !important;*/
+/*    text-align: left !important;*/
+/*    text-decoration: none !important;*/
+/*    vertical-align: top !important;*/
+/*    background: none !important;*/
+/*    border-radius: 0 !important;*/
+/*}*/
+
+/*.npay_button_box {*/
+/*    width: auto !important;*/
+/*    height: 100% !important;*/
+/*    zoom: 1 !important;*/
+/*    padding: 0 4px !important;*/
+/*    border-top: 2px solid #2b2f3a !important;*/
+/*    background-color: #fff !important;*/
+/*}*/
+
+/*.npay_storebtn_bx, .npay_button_box, .npay_button_box2, .npay_storebtn_bx *, .npay_button_box *, .npay_button_box2 * {*/
+/*    display: block !important;*/
+/*    overflow: hidden !important;*/
+/*    float: none !important;*/
+/*    position: static !important;*/
+/*    margin: 0 !important;*/
+/*    border: 0 none !important;*/
+/*    font-size: 12px !important;*/
+/*    line-height: 16px !important;*/
+/*    font-family: '돋움', Dotum, Helvetica, sans-serif !important;*/
+/*    text-align: left !important;*/
+/*    text-decoration: none !important;*/
+/*    vertical-align: top !important;*/
+/*    background: none !important;*/
+/*    border-radius: 0 !important;*/
+/*}*/
+
+/*.npay_button {*/
+/*    position: relative !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 11px 0 11px 86px !important;*/
+/*    zoom: 1 !important;*/
+/*}*/
+
+/*.npay_text {*/
+/*    display: block !important;*/
+/*    position: absolute !important;*/
+/*    top: 11px !important;*/
+/*    left: 0 !important;*/
+/*    width: 79px !important;*/
+/*    height: 36px !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 0 !important;*/
+/*    background: url("../../assets/npay_sp_text.png") no-repeat !important;*/
+/*    background-size: 180px auto !important;*/
+/*}*/
+
+/*.npay_button_box .npay_blind{*/
+/*    overflow: hidden !important;*/
+/*    position: absolute !important;*/
+/*    width: 1px !important;*/
+/*    height: 1px !important;*/
+/*    margin: -1px !important;*/
+/*    padding: 0 !important;*/
+/*    clip: rect(0 0 0 0) !important;*/
+/*}*/
+
+/*.npay_btn_list {*/
+/*    display: table !important;*/
+/*    width: 100% !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 0 !important;*/
+/*    table-layout: fixed !important;*/
+/*    list-style: none !important;*/
+/*}*/
+
+/*.npay_btn_item {*/
+/*    display: table-cell !important;*/
+/*    height: 37px !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 0 !important;*/
+/*    text-align: left !important;*/
+/*}*/
+
+/*.npay_btn_item:first-child .npay_btn_link {*/
+/*    margin: 0 !important;*/
+/*    box-sizing: content-box;*/
+/*}*/
+
+/*.npay_btn_link.btn_green {*/
+/*    border-color: #00c851 !important;*/
+/*    background-color: #00de5a !important;*/
+/*}*/
+
+/*.npay_btn_link.npay_btn_pay {*/
+/*    background-image: url("../../assets/npay_sp_payment.png") !important;*/
+/*    background-position: 50% 0 !important;*/
+/*    background-repeat: no-repeat !important;*/
+/*    background-size: 63px auto !important;*/
+/*}*/
+
+/*.npay_btn_link {*/
+/*    display: block !important;*/
+/*    height: 35px !important;*/
+/*    padding: 0 !important;*/
+/*    border: 1px solid #ccc !important;*/
+/*    border-radius: 2px !important;*/
+/*    text-align: center !important;*/
+/*    text-decoration: none !important;*/
+/*}*/
+
+/*.npay_button_box .npay_blind{*/
+/*    overflow: hidden !important;*/
+/*    position: absolute !important;*/
+/*    width: 1px !important;*/
+/*    height: 1px !important;*/
+/*    margin: -1px !important;*/
+/*    padding: 0 !important;*/
+/*    clip: rect(0 0 0 0) !important;*/
+/*}*/
+
+/*.npay_btn_item.btn_width {*/
+/*    width: 40px !important;*/
+/*}*/
+
+/*.npay_btn_item {*/
+/*    display: table-cell !important;*/
+/*    height: 37px !important;*/
+/*    margin: 0 !important;*/
+/*    padding: 0 !important;*/
+/*    text-align: left !important;*/
+/*}*/
+
+/*.npay_btn_link.npay_btn_zzim {*/
+/*    background-image: url(../../images/button/2023_10_diff/npay_sp_zzim.png) !important;*/
+/*    background-position: 50% 0 !important;*/
+/*    background-repeat: no-repeat !important;*/
+/*    background-size: 35px auto !important;*/
+/*}*/
+

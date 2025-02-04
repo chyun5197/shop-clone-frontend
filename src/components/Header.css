@@ -1,6 +1,6 @@
 .Header > div {
     display: flex;
-    line-height: 60px;
+    line-height: 50px;
 }
 .Header a, img, button{
     cursor: pointer;
@@ -17,6 +17,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    height:50px
 }
 
 .Header .header_line1 > div{

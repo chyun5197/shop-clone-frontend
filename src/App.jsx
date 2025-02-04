@@ -15,29 +15,41 @@ import ProductDetail from "./pages/product/ProductDetail.jsx";
 export const ProductStateContext = createContext();
 export const ProductDispatchContext = createContext();
 
-function reducer(state, action) {
-    return state;
+// export const ProductPageStateContext = createContext();
+// export const ProductPageDispatchContext = createContext();
+
+function reducer() {
+    
 }
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [data, dispatch] = useReducer(reducer, []);
 
+
     return (
         <>
-            <Header />
-            <ProductStateContext.Provider value={data}>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/myshop/wishlist" element={<Wishlist/>}/>
-                    <Route path="/myshop" element={<Mypage/>}/>
-                    <Route path="/order/cart" element={<Cart/>}/>
-                    <Route path="/product/list" element={<ProductList/>}/>
-                    <Route path="/product/detail" element={<ProductDetail/>}/>
-                    <Route path="/product/serach" element={<ProductSearch/>}/>
-                    <Route path="*" element={<Notfound/>}/>
-                </Routes>
-            </ProductStateContext.Provider>
+            <div className="all_wrap">
+                <Header/>
+                <div id="content_wrap">
+                    <div id="container">
+                        <div id='contents'>
+                            <ProductStateContext.Provider value={data}>
+                                <Routes>
+                                    <Route path="/" element={<Home/>}/>
+                                    <Route path="/myshop/wishlist" element={<Wishlist/>}/>
+                                    <Route path="/myshop" element={<Mypage/>}/>
+                                    <Route path="/order/cart" element={<Cart/>}/>
+                                    <Route path="/product/list" element={<ProductList/>}/>
+                                    <Route path="/product/detail" element={<ProductDetail/>}/>
+                                    <Route path="/product/serach" element={<ProductSearch/>}/>
+                                    <Route path="*" element={<Notfound/>}/>
+                                </Routes>
+                            </ProductStateContext.Provider>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
