@@ -8,7 +8,7 @@ import notice_3 from '../../assets/Notice-3.jpg'
 import {useNavigate, useSearchParams, Link} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {categroy} from "../../util/Category.js";
+import {categroy} from "../../global/Category.js";
 import npay_sp_text from '../../assets/npay_sp_text.png'
 
 const ProductDetail = () => {

@@ -225,3 +225,8 @@ ul ul {
     text-align: center;
     font-size: 15px;
 }
+
+.pogrd-hov{
+    cursor: pointer;
+}
+

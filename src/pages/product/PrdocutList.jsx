@@ -1,10 +1,12 @@
 import './ProductList.css'
-import {useNavigate, useSearchParams} from "react-router-dom";
-import {useEffect, useState} from "react";
 import axios from "axios";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
+
 
 import Pagination from "../../components/Pagination.jsx"
 import ProductThumb from "../../components/ProductThumb.jsx";
+import {PrimaryDispatchContext, PrimaryStateContext} from "../../App.jsx";
 
 const ProductList = () => {
     const [params, setParams] = useSearchParams();
@@ -18,6 +20,9 @@ const ProductList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sorting, setSorting] = useState('new');
 
+    const primaryInfo = useContext(PrimaryStateContext);
+    const {onBranding} = useContext(PrimaryDispatchContext)
+
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -26,20 +31,24 @@ const ProductList = () => {
                 setLoading(true);
                 const response = await axios.get(
                     // 'http://localhost:8080/api/products/all'
-                    `http://localhost:8080/api/products?brand=${params.get("brand")}&page=${currentPage}&pageSize=35&sorting=${sorting}`,
+                    `http://localhost:8080/api/products/list?brand=${params.get("brand")}&page=${currentPage}&pageSize=35&sorting=${sorting}`,
                 );
                 setProductList(response.data);
                 setCurrentPage(Number(params.get("page")));
-                // setProductKeys(Object.keys(response.data));
-                // setCurrentPage(params.get("page"))
-                // console.log(currentPage);
+
+                // const responseBrand = await axios.get(
+                //     `http://localhost:8080/api/products/brand/${params.get("cate")}`
+                // );
+                // onBranding(responseBrand.data.image)
+                // console.log('ProductList 배너:' + primaryInfo.banner)
             }catch(e){
                 setError(e);
             }
             setLoading(false);
         };
         fetchData();
-    }, [params.get("page"), sorting]);
+    }, [params.get("page"), sorting, params.get("cate")]); // params.get("cate")
+
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
@@ -71,6 +80,9 @@ const ProductList = () => {
 
     return (
         <div>
+            <img className='bannerImg' src={primaryInfo['banner']} alt='임시'/>
+
+            {/*<div>{primaryInfo['banner']}</div>*/}
             <div className="hanblank_50"></div>
             <div className="headcategory-path">
                 <ol>
@@ -85,9 +97,9 @@ const ProductList = () => {
                     <strong> {productList.totalCount}개</strong>
                 </p>
                 <ul id='type'>
-                    <li className='pogrd-hov'><a onClick={()=>setSorting('new')}>신상품</a></li>
-                    <li className='pogrd-hov'><a onClick={()=>setSorting('asc')}>낮은가격</a></li>
-                    <li className='pogrd-hov'><a onClick={()=>setSorting('desc')}>높은가격</a></li>
+                    <li className='pogrd-hov'><a onClick={() => setSorting('new')}>신상품</a></li>
+                    <li className='pogrd-hov'><a onClick={() => setSorting('asc')}>낮은가격</a></li>
+                    <li className='pogrd-hov'><a onClick={() => setSorting('desc')}>높은가격</a></li>
                 </ul>
             </div>
             <div className="hanblank_70"></div>
@@ -97,10 +109,10 @@ const ProductList = () => {
                     {productList.productThumbs.map((product) => (
                         <li className='item'
                             key={product.id}
-                            onClick={()=>nav(`/product/detail?id=${product.id}`)}>
+                            onClick={() => nav(`/product/detail?id=${product.id}`)}>
                             <div className="box">
                                 <div className="thumb_wrap">
-                                        <img src={product.image} alt="" />
+                                    <img src={product.image} alt=""/>
                                 </div>
                                 <div className="title">
                                     {product.name}

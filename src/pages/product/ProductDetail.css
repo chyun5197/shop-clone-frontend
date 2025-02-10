@@ -2,14 +2,14 @@
     /*50->30으로 줄여놓음*/
     position: relative;
     width: 100%;
-    /*height: 50px;*/
+    height: 20px;
     display: block;
     clear: both;
 }
 
 .headcategory-path{
     /*overflow: hidden;*/
-    height: 30px;
+    height: 10px;
     line-height: 30px;
     margin: 0;
     padding: 0;
