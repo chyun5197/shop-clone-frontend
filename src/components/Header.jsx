@@ -60,7 +60,7 @@ const Header = () => {
         }
     }
 
-    // 로그아웃 핸들러
+    // 로그아웃 핸들러 .
     const handleLogout = async () => {
         try {
             await axios.get('/api/user/logout');
