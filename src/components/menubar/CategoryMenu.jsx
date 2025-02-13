@@ -7,6 +7,7 @@ const CategoryMenu = ({cateKey}) => { // cateKey: Guitars 1
         <ul className="brand">
             {categroy[cateKey].map((category) =>
                 <BrandMenu brandName={category.name} cateKey={cateKey} key={category.name}/>
+                //category.name: "Fender" | cateKey: "Guitars 1"
             )}
         </ul>
     </li>

@@ -1,4 +1,8 @@
+import CartViewer from "../../components/cart/CartViewer.jsx";
+
 const Cart = () => {
-    return <div>장바구니</div>
+    return <div>
+        <CartViewer/>
+    </div>
 };
 export default Cart;

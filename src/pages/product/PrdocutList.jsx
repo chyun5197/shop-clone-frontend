@@ -5,7 +5,7 @@ import {useContext, useEffect, useState} from "react";
 
 
 import Pagination from "../../components/Pagination.jsx"
-import ProductThumb from "../../components/ProductThumb.jsx";
+import ProductThumb from "../../components/product/ProductThumb.jsx";
 import {PrimaryDispatchContext, PrimaryStateContext} from "../../App.jsx";
 
 const ProductList = () => {
@@ -13,34 +13,29 @@ const ProductList = () => {
     const nav = useNavigate();
     // const nowPage = params.get("page");
 
-    const [productList, setProductList] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     // const [productKeys, setProductKeys] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [sorting, setSorting] = useState('new');
 
     const primaryInfo = useContext(PrimaryStateContext);
     const {onBranding} = useContext(PrimaryDispatchContext)
+    const [productList, setProductList] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
             try{
                 setError(null);
-                setProductList(null);
                 setLoading(true);
+                setProductList(null);
                 const response = await axios.get(
-                    // 'http://localhost:8080/api/products/all'
-                    `http://localhost:8080/api/products/list?brand=${params.get("brand")}&page=${currentPage}&pageSize=35&sorting=${sorting}`,
+                    import.meta.env.VITE_API_URL + '/api/products/list?'
+                    +`brand=${params.get("brand")}&page=${currentPage}&pageSize=35&sorting=${sorting}&category=${params.get("category")}`
+                    // => 분류번호로 탐색하도록 바꿔야
                 );
                 setProductList(response.data);
                 setCurrentPage(Number(params.get("page")));
-
-                // const responseBrand = await axios.get(
-                //     `http://localhost:8080/api/products/brand/${params.get("cate")}`
-                // );
-                // onBranding(responseBrand.data.image)
-                // console.log('ProductList 배너:' + primaryInfo.banner)
             }catch(e){
                 setError(e);
             }
@@ -48,7 +43,6 @@ const ProductList = () => {
         };
         fetchData();
     }, [params.get("page"), sorting, params.get("cate")]); // params.get("cate")
-
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;

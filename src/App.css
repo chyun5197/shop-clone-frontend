@@ -92,3 +92,16 @@ div{
     position: relative;
 }
 
+.titleArea {
+    min-height: 30px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.titleArea h2 {
+    display: inline-block;
+    padding: 0 0 0 12px;
+    color: #2e2e2e;
+    font-size: 16px;
+    background: url(http://img.echosting.cafe24.com/skin/base/layout/ico_heading.gif) 0 50% no-repeat;
+}

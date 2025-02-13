@@ -1,0 +1,317 @@
+
+
+.titleArea p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    margin: 0;
+    padding: 0;
+}
+
+.orderStep {
+    text-align: center;
+}
+
+
+img {
+    border: none;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.orderListArea .order-normtitle {
+    height: 38px;
+    margin: 20px 0 0;
+    padding: 0 0 0 9px;
+    border: 1px solid #e5e5e5;
+    border-bottom: 0;
+    line-height: 38px;
+    background: #fafafa;
+}
+
+.order-normtitle h3{
+    color: #868686;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.cartTable{
+    margin: 0 0 1px;
+    border: 1px solid #e5e5e5;
+    color: #868686;
+    line-height: 1.5;
+
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+}
+
+.cartTable tfoot td {
+    padding: 15px 10px 17px;
+    background: #fafafa;
+    text-align: right;
+
+    border-top: 1px solid #e5e5e5;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+.cartTable tfoot td .type {
+    float: left;
+    margin: 6px 0 0;
+    font-weight: normal;
+}
+
+.cartTable tfoot td .total {
+    margin: 0 0 0 15px;
+    color: #343434;
+}
+
+.cartTable tfoot td .total span {
+    font-size: 17px;
+    letter-spacing: -1px;
+}
+
+.cartTable thead th {
+    padding: 11px 0 9px;
+    border-left: 1px solid #e5e5e5;
+    font-weight: normal;
+    background: #fafafa;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+.record td{
+    color: #868686;
+    font: 11px 'Nanum Gothic' ,나눔고딕,Verdana,Dotum,AppleGothic,sans-serif;
+}
+
+.cartTable td {
+    padding: 8px 0 5px;
+    border-top: 1px solid #e5e5e5;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+input[type=checkbox] {
+    width: 13px;
+    height: 13px;
+    border: 0;
+}
+
+input, select, textarea {
+    font-size: 100%;
+    font-family: "돋움", Dotum;
+    color: #353535;
+    vertical-align: middle;
+}
+
+td.thumb img {
+    width: 80px;
+}
+
+.cartTable td.product {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.cartTable span.quantity {
+    position: relative;
+    display: inline-block;
+    width: 27px;
+    margin: 0 1px 4px 0;
+    padding: 0 21px 0 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+}
+
+.cartTable span.quantity input {
+    width: 22px;
+    height: 23px;
+    padding: 0 0 0 5px;
+    border: 0;
+    line-height: 23px;
+
+    color: #353535;
+    font-size: 12px;
+    font-family: "돋움", Dotum;
+    vertical-align: middle;
+
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+}
+
+input[type="text" i] {
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+
+.quantity img{
+    text-decoration: none;
+    color: #000;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    border: none;
+    vertical-align: top;
+}
+
+.quantityUp{
+    position: absolute;
+    left: 27px;
+    top: 0;
+
+}
+
+.quantityDown{
+    position: absolute;
+    left: 27px;
+    bottom: 0;
+}
+
+.changeQuantity{
+    cursor: pointer;
+}
+
+p.info {
+    padding: 8px 0 8px 33px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #868686;
+    line-height: 1.5;
+    font-size: 11px;
+    background: url(http://img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 9px 8px;
+}
+
+.selectorder {
+    margin: 0 0 40px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.gLeft {
+    float: left;
+    text-align: left;
+}
+
+.gLeft .text {
+    margin: 0 6px 0 10px;
+    color: #353535;
+    line-height: 24px;
+}
+
+.gRight {
+    float: right;
+    text-align: right;
+}
+
+.totalsummary{
+    border: 1px solid #e5e5e5;
+    color: #868686;
+    line-height: 1.5;
+}
+
+.totalsummary table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+caption {
+    display: none;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+.box{
+    line-height: 58px;
+    text-align: center;
+    font-size: 23px;
+}
+
+.total_product_price_display_front{
+    line-height: 58px;
+    text-align: center;
+    font-size: 23px;
+}
+
+td.total {
+    color: #343434;
+}
+
+.justify{
+    position: relative;
+    margin: 10px 0 40px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.totalsummary table td.button img {
+    margin: 1px 0;
+}
+
+.totalsummary th:first-child{
+    border-left: 0;
+}
+
+.totalsummary tbody tr td:first-child{
+    border-left: 0;
+}
+
+.totalsummary th {
+    height: 39px;
+    border-left: 1px solid #e5e5e5;
+    line-height: 39px;
+    background: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.totalsummary td{
+    border-left: 1px solid #e5e5e5;
+}
+
+.price .box .total_product_price_display_front{
+    color: #868686;
+}
+
+.cartTable .grey strong{
+    color: #868686;
+    line-height: 1.5;
+}
+

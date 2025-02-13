@@ -1,0 +1,113 @@
+
+
+.login-background {
+    background: #fff url("../../assets/bg_login1.png") 20px 0 no-repeat;
+}
+
+.login-background .login {
+    border: 1px solid #d7d5d5;
+    margin: 0 0 3px 0;
+    padding: 30px 0 30px 330px;
+    padding-top: 50px;
+    color: #2e2e2e;
+    min-height: 300px;
+
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.login-background .login h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.login-background .login fieldset {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+
+    border: none;
+    vertical-align: top;
+
+    padding: 0;
+    color: #2e2e2e;
+
+
+    display: block;
+    min-inline-size: min-content;
+    margin-inline: 2px;
+    padding-block: 0.35em 0.625em;
+    padding-inline: 0.75em;
+}
+
+.login-background .login fieldset .id{
+    overflow: hidden;
+    display: block;
+    width: 233px;
+    margin: 0 0 2px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    color: #8F8F91;
+}
+
+.login-background .login fieldset .password{
+    overflow: hidden;
+    display: block;
+    width: 233px;
+    margin: 0 0 2px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    color: #8F8F91;
+}
+
+.login-background .login fieldset input {
+    float: left;
+    width: 165px;
+    height: 28px;
+    padding: 2px 2px 2px 3px;
+    border: 0 none;
+}
+
+.login-background .login fieldset input[type=text] {
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.login-background .login fieldset input[type=password]{
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.login-background .login .submit-button {
+    border: 0;
+    background: #3b404f;
+    border-radius: 6px;
+}
+
+.login-background .login fieldset button {
+    position: absolute;
+    top: 0;
+    right: 7px;
+}
+
+.login-background .login fieldset img{
+    margin: 0;
+    padding: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.login-background .login fieldset .security{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}

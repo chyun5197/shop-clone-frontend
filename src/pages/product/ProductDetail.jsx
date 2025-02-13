@@ -8,8 +8,6 @@ import notice_3 from '../../assets/Notice-3.jpg'
 import {useNavigate, useSearchParams, Link} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {categroy} from "../../global/Category.js";
-import npay_sp_text from '../../assets/npay_sp_text.png'
 
 const ProductDetail = () => {
     const [params, setParams] = useSearchParams();
@@ -17,11 +15,10 @@ const ProductDetail = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [productKeys, setProductKeys] = useState(null);
-    const nav = useNavigate()
+
     const [count, setCount] = useState(1);
 
-    // => hook 따로 빼야?
+    // 상품 상세 조회
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -29,15 +26,15 @@ const ProductDetail = () => {
                 setProduct(null);
                 setLoading(true);
                 const response = await axios.get(
-                    `http://localhost:8080/api/products/detail/${params.get("id")}`
+                    import.meta.env.VITE_API_URL + `/api/products/detail/${params.get("id")}`
                 );
                 setProduct(response.data);
-                setProductKeys(Object.keys(response.data));
 
             }catch(e){
                 setError(e);
             }
             setLoading(false);
+            window.scrollTo(0, 0);
         };
         fetchData();
     }, []);
@@ -45,6 +42,56 @@ const ProductDetail = () => {
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!product) return null;
+
+    // 장바구니 등록
+    const onClickAddCart = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios({
+                // params.get("id"): productId
+                url: import.meta.env.VITE_API_URL + `/api/cart/${params.get("id")}?count=${count}`,
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                },
+                method: 'POST',
+                // data: count,
+                withCredentials: true,
+            });
+            if (response.status === 201) {
+                alert('장바구니에 추가되었습니다!')
+            }else if (response.status === 208){ // 장바구니 중복
+                alert('이미 장바구니에 있습니다!')
+            }
+        } catch (error) {
+            alert('서버 에러')
+        }
+    };
+
+    // 위시 등록
+    const onClickWish = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios({
+                // params.get("id"): productId
+                url: import.meta.env.VITE_API_URL + `/api/wish/${params.get("id")}`,
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                },
+                method: 'POST',
+                withCredentials: true,
+            });
+            if (response.status === 201) {
+                alert('위시리스트에 추가되었습니다!')
+            }else if (response.status === 208){ // 위시 중복
+                alert('이미 관심상품에 있습니다!')
+            }
+        } catch (error) {
+            alert('서버 에러')
+        }
+    }
+
+    // 에러 로그 안뜨게 선언만
+    const onChangeCount = (e) => {}
 
     return (
         <div>
@@ -122,11 +169,11 @@ const ProductDetail = () => {
                         </div>
 
                         <div className="guideArea">
-                            <p className="info "><span className="displaynone"></span></p>
+                            <p className="info"
+                            ></p>
                         </div>
 
                         <div className="totalProducts">
-                            <p className="info "></p>
                             <table border="1">
                                 <colgroup>
                                     <col className="col1"/>
@@ -146,7 +193,9 @@ const ProductDetail = () => {
                                     </td>
                                     <td>
                                         <span className="quantity">
-                                            <input id="quantity" name="quantity_opt[]" value={count} type="text"/>
+                                            <input id="quantity" name="quantity_opt[]"
+                                                   value={count} onChange={onChangeCount}
+                                                   type="text"/>
 
                                             <img
                                                 src={btn_count_up}
@@ -159,7 +208,7 @@ const ProductDetail = () => {
                                                 alt="수량감소" className="quantityDown"
                                                 onClick={()=>
                                                     count > 1 ? setCount(count - 1) : setCount(1)
-                                                }
+                                                } // 1미만 금지
                                             />
 
                                         </span>
@@ -188,9 +237,9 @@ const ProductDetail = () => {
                         <div className="product-action">
                             <div className="btnArea">
                                 <a className="first">구매하기</a>
-                                <a>장바구니</a>
+                                <a className="addCart" onClick={onClickAddCart}>장바구니</a>
                                 <span className="displaynone">SOLD OUT</span>
-                                <a>위시리스트</a>
+                                <a className="wishList" onClick={onClickWish}>위시리스트</a>
                             </div>
 
                             {/*<div id="NaverChk_Button">*/}

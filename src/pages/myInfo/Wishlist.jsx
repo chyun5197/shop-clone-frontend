@@ -1,4 +1,8 @@
+import WishViewer from "../../components/wish/WishViewer.jsx";
+
 const Wishlist = () => {
-    return <div>위시리스트</div>
+    return <div>
+        <WishViewer />
+    </div>
 };
 export default Wishlist;

@@ -333,6 +333,7 @@ product-detaildesign table tbody th{
     margin: 7px 0 0;
     padding: 8px 0 0 11px;
     border-top: 1px solid #e8e8e8;
+    border-bottom: none;
     color: #757575;
 }
 
@@ -618,6 +619,10 @@ center img{
 .product-additional .link li.selected a {
     color: #111;
     font-size: 14px;
+}
+
+.addCart, .wishList{
+    cursor: pointer;
 }
 
 /*naver pay*/

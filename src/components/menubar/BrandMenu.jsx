@@ -4,6 +4,7 @@ import {PrimaryDispatchContext, PrimaryStateContext} from "../../App.jsx";
 import axios from "axios";
 import {categroy} from "../../global/Category.js";
 
+//brandName: "Fender" | cateKey: "Guitars 1"
 const BrandMenu = ({brandName, cateKey}) => {
     const nav = useNavigate()
 
@@ -14,11 +15,12 @@ const BrandMenu = ({brandName, cateKey}) => {
     const onClickBrand = async () => {
         const cate = categroy[cateKey].find((item) => item.name === brandName).cate;
         const response = await axios.get(
-            `http://localhost:8080/api/products/brand/${cate}`
+            import.meta.env.VITE_API_URL + `/api/products/brand/${cate}`
         );
         onBranding(response.data.image);
-        console.log(response.data.image);
-        nav(`/product/list?brand=${brandName.toLowerCase()}&cate=${cate}&page=1`)
+        // console.log(response.data.image);
+        window.scrollTo(0, 0);
+        nav(`/product/list?brand=${brandName.toLowerCase()}&cate=${cate}&page=1&category=${cateKey}`) // category: "Guitars 1"
     }
 
     // console.log(name);
