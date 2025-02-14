@@ -147,3 +147,9 @@
     color: #353535;
     vertical-align: middle;
 }
+
+.id-confirm{
+    font-size: 12px;
+    font-family: "돋움", Dotum;
+    color: #353535;
+}

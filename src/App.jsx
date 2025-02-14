@@ -1,12 +1,12 @@
 import './App.css'
 import {Route, Routes} from "react-router-dom";
-import {CookiesProvider} from 'react-cookie';
+import {CookiesProvider, useCookies} from 'react-cookie';
 import Header from './components/Header.jsx'
 import Home from './pages/Home'
 import Wishlist from "./pages/myInfo/Wishlist.jsx";
 import Cart from "./pages/myInfo/Cart.jsx";
 import Notfound from "./pages/Notfound.jsx";
-import Mypage from "./pages/myInfo/Mypage.jsx";
+import MyPage from "./pages/myInfo/MyPage.jsx";
 import {createContext, useCallback, useContext, useMemo, useReducer, useState} from "react";
 import ProductList from "./pages/product/PrdocutList.jsx";
 import ProductSearch from "./pages/product/ProductSearch.jsx";
@@ -18,9 +18,12 @@ import RegisterViewer from "./components/account/RegisterViewer.jsx";
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
 
+// const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']); //쿠키이름
+
 const primaryInitialInfo = {
     banner: home1, // 브랜드 배너 이미지
     isLogin: localStorage.getItem("access_token") !== null, // 로그인 여부
+    // isLogin: cookies.refresh_token !== null, // 로그인 여부
     date: new Date().getTime(), // 현재 시각
 }
 // console.log(primaryInitialInfo);
@@ -76,7 +79,7 @@ function App() {
                                         <Routes>
                                             <Route path="/" element={<Home/>}/>
                                             <Route path="/myshop/wishlist" element={<Wishlist/>}/>
-                                            <Route path="/myshop" element={<Mypage/>}/>
+                                            <Route path="/myshop" element={<MyPage/>}/>
                                             <Route path="/myshop/cart" element={<Cart/>}/>
                                             <Route path="/product/list" element={<ProductList/>}/>
                                             <Route path="/product/detail" element={<ProductDetail/>}/>

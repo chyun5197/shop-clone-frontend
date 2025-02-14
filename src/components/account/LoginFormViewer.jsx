@@ -14,7 +14,7 @@ const LoginFormViewer = () => {
         pw: "",
     });
 
-    const [cookies, setCookie, removeCookie] = useCookies(['refreshToken']); //쿠키이름
+    const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']); //쿠키이름
 
     const handleChange = (e) => {
         setUser({
@@ -39,16 +39,19 @@ const LoginFormViewer = () => {
             if (response.status === 200) {
                 alert('로그인 성공! ');
                 localStorage.setItem("access_token", response.data.accessToken);
-                localStorage.setItem("refresh_token", response.data.refreshToken); // -> 추후 Redis에 저장
-                primaryInfo.isLogin = true;
 
+                // 현재 스프링에서 받아온 쿠키는 새로고침하면 사라진다.. => 일단 바디로 받아서 훅으로 setCookie
+                // localStorage.setItem("refresh_token", response.data.refreshToken);
                 setCookie('refresh_token', response.data.refreshToken);
+                primaryInfo.isLogin = true;
 
                 nav('/')
             }
-        } catch (error) {
-            console.log('로그인 에러: ', error);
+        } catch (error) { // 리액트는 400번대를 에러로 처리
+            alert('아이디 혹은 비밀번호가 틀렸습니다!')
+            // alert(error.status) // 401
         }
+        // console.log(cookies.refresh_token)
     };
 
 

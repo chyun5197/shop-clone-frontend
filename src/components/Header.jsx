@@ -62,7 +62,7 @@ const Header = () => {
 
             // 토큰 모두 삭제
             localStorage.removeItem("access_token");
-            localStorage.removeItem("refresh_token");
+            // localStorage.removeItem("refresh_token");
             // removeCookie('refresh_token');
 
             nav("/")
@@ -106,7 +106,7 @@ const Header = () => {
                 <div className="line1_left">
                     <button className="btn_grey">별</button>
                     <button className="btn_grey">+</button>
-                    <button className="btn_grey">마이페이지</button>
+                    <button className="btn_grey" onClick={()=>nav('/myshop')}>마이페이지</button>
                 </div>
                 <div className="line1_middle">
                     <a onClick={onLoginClick}>{middleMenu1}</a>
