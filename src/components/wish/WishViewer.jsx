@@ -174,7 +174,7 @@ const WishViewer = () => {
 
 
     return (
-        <div>
+        <div className="contents">
             {/*<div>{checkedId}</div>*/}
             <div className="titleArea">
                 <h2>위시리스트</h2>

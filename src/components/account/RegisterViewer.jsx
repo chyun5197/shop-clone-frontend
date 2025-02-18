@@ -74,7 +74,7 @@ const RegisterViewer = () => {
     }
 
     return (
-        <div>
+        <div className='contents'>
             {/*{user.phone1}-{user.phone2}-{user.phone3}*/}
             <div className="titleArea">
                 <h2>회원가입</h2>

@@ -219,7 +219,7 @@ const CartViewer = () => {
 
 
     return (
-        <div>
+        <div className='contents'>
             <div className="titleArea">
                 <h2>장바구니</h2>
             </div>

@@ -8,12 +8,13 @@ import Cart from "./pages/myInfo/Cart.jsx";
 import Notfound from "./pages/Notfound.jsx";
 import MyPage from "./pages/myInfo/MyPage.jsx";
 import {createContext, useCallback, useContext, useMemo, useReducer, useState} from "react";
-import ProductList from "./pages/product/PrdocutList.jsx";
+import ProductList from "./pages/product/ProductList.jsx";
 import ProductSearch from "./pages/product/ProductSearch.jsx";
 import ProductDetail from "./pages/product/ProductDetail.jsx";
 import LoginFormViewer from "./components/account/LoginFormViewer.jsx";
 import home1 from "./assets/home-1-2.jpg";
 import RegisterViewer from "./components/account/RegisterViewer.jsx";
+import Banner from "./components/Banner.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -21,7 +22,6 @@ export const PrimaryDispatchContext = createContext();
 // const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']); //쿠키이름
 
 const primaryInitialInfo = {
-    banner: home1, // 브랜드 배너 이미지
     isLogin: localStorage.getItem("access_token") !== null, // 로그인 여부
     // isLogin: cookies.refresh_token !== null, // 로그인 여부
     date: new Date().getTime(), // 현재 시각
@@ -72,23 +72,18 @@ function App() {
                         <Header/>
                             <div id="content_wrap">
                                 <div id="container">
-                                    <div className='protitle'>
-                                        {/*<Banner />*/}
-                                    </div>
-                                    <div id='contents'>
-                                        <Routes>
-                                            <Route path="/" element={<Home/>}/>
-                                            <Route path="/myshop/wishlist" element={<Wishlist/>}/>
-                                            <Route path="/myshop" element={<MyPage/>}/>
-                                            <Route path="/myshop/cart" element={<Cart/>}/>
-                                            <Route path="/product/list" element={<ProductList/>}/>
-                                            <Route path="/product/detail" element={<ProductDetail/>}/>
-                                            <Route path="/product/serach" element={<ProductSearch/>}/>
-                                            <Route path="/login-form" element={<LoginFormViewer/>}/>
-                                            <Route path="/register" element={<RegisterViewer/>}/>
-                                            <Route path="*" element={<Notfound/>}/>
-                                        </Routes>
-                                    </div>
+                                    <Routes>
+                                        <Route path="/" element={<Home/>}/>
+                                        <Route path="/myshop/wishlist" element={<Wishlist/>}/>
+                                        <Route path="/myshop" element={<MyPage/>}/>
+                                        <Route path="/myshop/cart" element={<Cart/>}/>
+                                        <Route path="/product/list" element={<ProductList/>}/>
+                                        <Route path="/product/detail" element={<ProductDetail/>}/>
+                                        <Route path="/product/serach" element={<ProductSearch/>}/>
+                                        <Route path="/login-form" element={<LoginFormViewer/>}/>
+                                        <Route path="/register" element={<RegisterViewer/>}/>
+                                        <Route path="*" element={<Notfound/>}/>
+                                    </Routes>
                                 </div>
                             </div>
                     </PrimaryDispatchContext.Provider>
