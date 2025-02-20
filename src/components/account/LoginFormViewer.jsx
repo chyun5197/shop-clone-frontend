@@ -49,6 +49,7 @@ const LoginFormViewer = () => {
             }
         } catch (error) { // 리액트는 400번대를 에러로 처리
             alert('아이디 혹은 비밀번호가 틀렸습니다!')
+            // alert(error.response.data.message)
             // alert(error.status) // 401
         }
         // console.log(cookies.refresh_token)
@@ -57,7 +58,7 @@ const LoginFormViewer = () => {
 
 
     return (
-        <div>
+        <div className="contents">
             <div className="titleArea">
                 <h2>로그인</h2>
             </div>

@@ -5,9 +5,6 @@ const Home = () => {
 
     return <div>
         <img className='homeImg' src={localStorage.getItem("banner")} alt='실제'/>
-        <h2>
-            홈화면
-        </h2>
     </div>
 };
 export default Home;
