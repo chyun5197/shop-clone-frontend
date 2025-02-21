@@ -70,6 +70,8 @@ const ProductList = () => {
 
     // 정렬 클릭 이벤트
     const handleSorting = (sorting) => {
+        if (loading) return; // 상품 로딩중이면 기다리도록
+
         // 페이지와 마찬가지 이유로 정렬도 로컬스토리지로 관리
         localStorage.setItem("sorting", sorting);
         localStorage.setItem("page", 1);

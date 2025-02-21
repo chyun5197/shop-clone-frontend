@@ -84,6 +84,7 @@ const Header = () => {
     const onCartClick = () =>{
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
+            primaryInfo.isLogin = false;
         }else{
             window.scrollTo(0, 0);
             nav('/myshop/cart');
@@ -94,6 +95,7 @@ const Header = () => {
     const onWishClick = () => {
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
+            primaryInfo.isLogin = false;
         }else{
             window.scrollTo(0, 0);
             nav('/myshop/wishlist');

@@ -43,7 +43,7 @@ const MyPageViewer = () => {
     if (!user) return null;
 
     return (
-        <div className="MyPageViewer">
+        <div className="MyPageViewer contents">
             {/*{user.phone1}-{user.phone2}-{user.phone3}*/}
             <div className="titleArea">
                 <h2>마이페이지</h2>

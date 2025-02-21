@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "https://api.hyun-clone.shop/$1"
+    }
+  ]
+}
