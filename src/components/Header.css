@@ -14,9 +14,9 @@
     margin: 0;
     padding: 0;
     letter-spacing: 1px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
     height:50px
 }
 
@@ -24,8 +24,6 @@
     white-space: nowrap;
 }
 
-.Header .header_line1 .line1_left{
-}
 .Header .header_line1 .line1_middle{
     color: black;
     display: block;
@@ -39,7 +37,44 @@
 }
 
 .Header .header_line1 .line1_right{
-    width: 11%;
+    /*align-content: ;*/
+    /*width: 11%;*/
+}
+
+.Header .btn_check{
+    color: white;
+    font-size: 12px;
+    background: #023d86;
+    position: relative;
+    line-height: 30px;
+    overflow: hidden;
+    margin-left: 3px;
+    margin-top: 4px;
+    border-radius: 5px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    border: none;
+
+    &.active {
+        background-color: #c59a31;
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
+
+.Header .btn_check:hover{
+    font-size: 14px;
+    background-color: #c59a31;
+    font-weight: bold;
+}
+
+/*로그인, 회원가입, 장바구니 라인*/
+.isCompleted{
+    &.active {
+        color: #c59a31;
+        font-weight: bold;
+    }
 }
 
 
@@ -56,7 +91,30 @@
     -moz-transition: .2s;
     -ms-transition: .2s;
     border: none;
+
+    &.active {
+        background-color: #c59a31;
+        font-weight: bold;
+    }
 }
+
+.Header .btn_grey:hover{
+    background: #023d86;
+    font-weight: bold;
+}
+.Header .btn_blue:hover{
+    background: #023d86;
+    font-weight: bold;
+}
+
+.line1_left .btn_grey{
+    font-size: 12px;
+}
+
+
+
+
+
 
 .Header .logline{
     width: 1px;

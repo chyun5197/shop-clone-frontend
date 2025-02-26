@@ -7,6 +7,8 @@ import {useContext, useEffect, useState} from "react";
 import {PrimaryDispatchContext, PrimaryStateContext} from "../App.jsx";
 import axios from "axios";
 import {useCookies} from "react-cookie";
+import { PiUserCircleFill } from "react-icons/pi";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
     const cateKeys = Object.keys(categroy);
@@ -84,7 +86,6 @@ const Header = () => {
     const onCartClick = () =>{
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-            primaryInfo.isLogin = false;
         }else{
             window.scrollTo(0, 0);
             nav('/myshop/cart');
@@ -95,45 +96,68 @@ const Header = () => {
     const onWishClick = () => {
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-            primaryInfo.isLogin = false;
         }else{
             window.scrollTo(0, 0);
             nav('/myshop/wishlist');
         }
     }
 
+    const onMyShopClick = () => {
+        if (!primaryInfo.isLogin) {
+            alert('로그인을 해주세요')
+        }else{
+            window.scrollTo(0, 0);
+            nav('/myshop');
+        }
+    }
+
+    const [complete, setComplete] = useState(false);
+    const showComplete = () => {
+        setComplete(true)
+    }
+
     return (
         <header className="Header">
             <div className="header_line1">
                 <div className="line1_left">
-                    <button className="btn_grey">별</button>
-                    <button className="btn_grey">+</button>
-                    <button className="btn_grey" onClick={()=>nav('/myshop')}>마이페이지</button>
+                    {/*<button className="btn_grey">A</button>*/}
+                    <button
+                        className={"btn_check"+(complete ? " active" : "")}
+                        onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 확인
+                    </button>
+                    <button className={"btn_grey"+(complete ? " active" : "")}
+                            onClick={()=>nav("/product/search")}>
+                        <FaSearch style={{verticalAlign:'sub'}} size='14' />
+                    </button>
+                    <button
+                        className={"btn_grey"+(complete ? " active" : "")}
+                        onClick={onMyShopClick}>
+                        <PiUserCircleFill style={{verticalAlign:'sub'}} size='18'/> 마이페이지
+                    </button>
                 </div>
                 <div className="line1_middle">
-                    <a onClick={onLoginClick}>{middleMenu1}</a>
+                    <a className={"isCompleted"+(complete ? " active" : "")} onClick={onLoginClick}>{middleMenu1}</a>
                     <span className="logline"></span>
-                    <a onClick={onJoinClick}>{middleMenu2}</a>
+                    <a className={"isCompleted"+(complete ? " active" : "")} onClick={onJoinClick}>{middleMenu2}</a>
                     <span className="logline"></span>
-                    <a onClick={onCartClick}>장바구니</a>
+                    <a className={"isCompleted"+(complete ? " active" : "")} onClick={onCartClick}>장바구니</a>
                     <span className="logline"></span>
                     <a>주문조회</a>
                     <span className="logline"></span>
-
                     <a>International Shipping Available</a>
                     <span className="logline"></span>
                     <a>Global Tax Free</a>
                 </div>
                 <div className="line1_right">
-                    <button className="btn_grey" onClick={onWishClick}>wish</button>
-                    <button className="btn_grey" onClick={onCartClick}>cart</button>
-                    <button className="btn_grey">search</button>
+                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={onWishClick}>wish</button>
+                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={onCartClick}>cart</button>
+                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={()=>nav("/product/search")}>search</button>
                 </div>
             </div>
             <div className="header_line2">
                 <img src={logo} onClick={onClickHome} alt=''></img>
 
-                {cateKeys.map(key => (<CategoryMenu cateKey={key} key={key}/>))}
+                {cateKeys.map((key, index) => (<CategoryMenu cateKey={key} complete={complete} index={index} key={key}/>))}
 
                 <li className="viewgallery">
                     <button className='btn_blue'>베이스컬렉션</button>
@@ -144,7 +168,7 @@ const Header = () => {
                 <li className="board">
                     <button className='btn_blue'>게시판</button>
                 </li>
-                <button className='btn_close'>닫기</button>
+                <button className='btn_close'><PiUserCircleFill size='45'/></button>
             </div>
             {/*<img className='bannerImg' src={primaryInfo['banner']} alt=''/>*/}
 

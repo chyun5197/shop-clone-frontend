@@ -8,13 +8,11 @@ import Cart from "./pages/myInfo/Cart.jsx";
 import Notfound from "./pages/Notfound.jsx";
 import MyPage from "./pages/myInfo/MyPage.jsx";
 import {createContext, useCallback, useContext, useMemo, useReducer, useState} from "react";
-import ProductList from "./pages/product/ProductList.jsx";
 import ProductSearch from "./pages/product/ProductSearch.jsx";
-import ProductDetail from "./pages/product/ProductDetail.jsx";
-import LoginFormViewer from "./components/account/LoginFormViewer.jsx";
-import home1 from "./assets/home-1-2.jpg";
+import ProductDetail from "./components/product/ProductDetail.jsx";
 import RegisterViewer from "./components/account/RegisterViewer.jsx";
-import Banner from "./components/Banner.jsx";
+import ProductList from "./pages/product/ProductList.jsx";
+import LoginForm from "./pages/LoginForm.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -79,8 +77,8 @@ function App() {
                                         <Route path="/myshop/cart" element={<Cart/>}/>
                                         <Route path="/product/list" element={<ProductList/>}/>
                                         <Route path="/product/detail" element={<ProductDetail/>}/>
-                                        <Route path="/product/serach" element={<ProductSearch/>}/>
-                                        <Route path="/login-form" element={<LoginFormViewer/>}/>
+                                        <Route path="/product/search" element={<ProductSearch/>}/>
+                                        <Route path="/login-form" element={<LoginForm/>}/>
                                         <Route path="/register" element={<RegisterViewer/>}/>
                                         <Route path="*" element={<Notfound/>}/>
                                     </Routes>

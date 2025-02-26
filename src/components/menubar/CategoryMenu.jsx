@@ -1,12 +1,12 @@
 import {categroy} from "../../global/Category.js";
 import BrandMenu from "./BrandMenu.jsx";
 
-const CategoryMenu = ({cateKey}) => { // cateKey: Guitars 1
+const CategoryMenu = ({cateKey, complete, index}) => { // cateKey: Guitars 1
     return <li className="category">
-        <a>{cateKey}</a>
+        <a className={"isCompleted"+(complete && index<6? " active" : "")}>{cateKey}</a>
         <ul className="brand">
-            {categroy[cateKey].map((category) =>
-                <BrandMenu brandName={category.name} cateKey={cateKey} key={category.name}/>
+            {categroy[cateKey].map((category, index) =>
+                <BrandMenu brandName={category.name} cateKey={cateKey} complete={complete} index={index}key={category.name}/>
                 //category.name: "Fender" | cateKey: "Guitars 1"
             )}
         </ul>

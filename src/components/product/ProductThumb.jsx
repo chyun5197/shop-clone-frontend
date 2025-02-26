@@ -1,18 +1,30 @@
 import {useNavigate} from "react-router-dom";
 
-const ProductThumb = ({currentProducts}) => {
+const ProductThumb = ({product}) => {
     const nav = useNavigate();
-
     return (
-        <div>
-            <h3>
-                {currentProducts.productThumbs.map((product) => (
-                    <li key={product.id} onClick={()=>nav(`/product/detail?id=${product.id}`)}>
-                        {product.id}번 {product.name}
+        <li className='item'
+            key={product.id}
+            onClick={() => nav(`/product/detail?id=${product.id}`)}>
+            <div className="box">
+                <div className="thumb_wrap">
+                    <img src={product.cdnImage} alt=""/>
+                </div>
+                <div className="title">
+                    {product.name}
+                </div>
+                <ul className='product-price'>
+                    <li className='record'>
+                                            <span
+                                                className='origin-price'>{product.originPrice.toLocaleString()}원</span>
                     </li>
-                ))}
-            </h3>
-        </div>
+                    <li className='record'>
+                        <span className='price'>{product.price.toLocaleString()}원</span>
+                    </li>
+                </ul>
+
+            </div>
+        </li>
     )
 }
 
