@@ -156,7 +156,8 @@ const Header = () => {
                 </div>
             </div>
             <div className="header_line2">
-                <img src={logo} onClick={onClickHome} alt=''></img>
+                {/*<img src={logo} onClick={onClickHome} alt=''></img>*/}
+                <img src="https://cdn.hyun-clone.shop/logo.jpg" onClick={onClickHome} alt=''></img>
 
                 {cateKeys.map((key, index) => (<CategoryMenu cateKey={key} complete={complete} index={index} key={key}/>))}
 
