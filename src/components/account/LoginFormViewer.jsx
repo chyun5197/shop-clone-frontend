@@ -40,6 +40,11 @@ const LoginFormViewer = () => {
                 alert('로그인 성공! ');
                 localStorage.setItem("access_token", response.data.accessToken);
 
+                // 만료시간 4시간 (액세스 토큰과 동일)
+                let tokenExpiration = new Date().getTime() + 1000 * 60 * 60 * 4;
+
+                localStorage.setItem("expiration", tokenExpiration)
+
                 // 현재 스프링에서 받아온 쿠키는 새로고침하면 사라진다.. => 일단 바디로 받아서 훅으로 setCookie
                 // localStorage.setItem("refresh_token", response.data.refreshToken);
                 setCookie('refresh_token', response.data.refreshToken);

@@ -62,7 +62,7 @@ const CartViewer = () => {
         fetchData();
     }, []);
 
-    if (loading) return <div>로딩중..</div>;
+    if (loading) return ;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!cartResponse) return null;
 

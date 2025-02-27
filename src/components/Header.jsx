@@ -64,8 +64,8 @@ const Header = () => {
 
             // 토큰 모두 삭제
             localStorage.removeItem("access_token");
+            removeCookie('refresh_token');
             // localStorage.removeItem("refresh_token");
-            // removeCookie('refresh_token');
 
             nav("/")
             location.reload();
@@ -122,6 +122,7 @@ const Header = () => {
                 <div className="line1_left">
                     {/*<button className="btn_grey">A</button>*/}
                     <button
+                        id = "page_check"
                         className={"btn_check"+(complete ? " active" : "")}
                         onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 확인
                     </button>
@@ -173,7 +174,6 @@ const Header = () => {
             {/*<img className='bannerImg' src={primaryInfo['banner']} alt=''/>*/}
 
         </header>
-
     )
 };
 
