@@ -53,17 +53,17 @@ const ProductList = () => {
     const onPageChange = ({ selected, isNext, isPrevious}) => {// console.log(nowPage);
         if (isNext) {
             if(currentPage< totalPage - 1){
-                nav(`/product/list?cate=${params.get("cate")}&page=${currentPage+1}`)
+                nav(`/products/list?cate=${params.get("cate")}&page=${currentPage+1}`)
             }
         }else if(isPrevious){
             if(currentPage > 1){
-                nav(`/product/list?cate=${params.get("cate")}&page=${currentPage-1}`)
+                nav(`/products/list?cate=${params.get("cate")}&page=${currentPage-1}`)
             }
         }else{
             // 현재 페이지 숫자를 로컬스토리지에서 관리해야 다른 브랜드로 넘어가도 1페이지로 시작 가능
             // useState로 관리하면 실행순서상 이전에 있던 페이지가 남은채로 라우팅해버려서 다른 브랜드 클릭시 1페이지로 갱신이 안됨
             localStorage.setItem("page", selected+1);
-            nav(`/product/list?cate=${params.get("cate")}&page=${selected+1}`)
+            nav(`/products/list?cate=${params.get("cate")}&page=${selected+1}`)
         }
         window.scrollTo(0, 0);
     };
@@ -75,7 +75,7 @@ const ProductList = () => {
         // 페이지와 마찬가지 이유로 정렬도 로컬스토리지로 관리
         localStorage.setItem("sorting", sorting);
         localStorage.setItem("page", 1);
-        nav(`/product/list?cate=${params.get("cate")}&sorting=${sorting}`)
+        nav(`/products/list?cate=${params.get("cate")}&sorting=${sorting}`)
     }
 
 
@@ -109,7 +109,7 @@ const ProductList = () => {
                         {productList.productThumbs.map((product) => (
                             <li className='item'
                                 key={product.id}
-                                onClick={() => nav(`/product/detail?id=${product.id}`)}>
+                                onClick={() => nav(`/products/detail?id=${product.id}`)}>
                                 <div className="box">
                                     <div className="thumb_wrap">
                                         <img src={product.image} alt=""/>

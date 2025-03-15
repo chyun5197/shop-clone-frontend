@@ -45,6 +45,8 @@ const LoginFormViewer = () => {
 
                 localStorage.setItem("expiration", tokenExpiration)
 
+                console.log(response.headers.get('Access-Control-Allow-Origin'));
+
                 // 현재 스프링에서 받아온 쿠키는 새로고침하면 사라진다.. => 일단 바디로 받아서 훅으로 setCookie
                 // localStorage.setItem("refresh_token", response.data.refreshToken);
                 setCookie('refresh_token', response.data.refreshToken);
@@ -64,6 +66,7 @@ const LoginFormViewer = () => {
 
     return (
         <div className="contents">
+            <div style={{height:"70px"}}></div>
             <div className="titleArea">
                 <h2>로그인</h2>
             </div>
@@ -91,7 +94,8 @@ const LoginFormViewer = () => {
                             </button>
                             <p>
                                 <Link to="/register">
-                                    <img src="//img.echosting.cafe24.com/skin/base_ko_KR/member/btn_join.gif" alt="회원가입"/>
+                                    <img src="//img.echosting.cafe24.com/skin/base_ko_KR/member/btn_join.gif"
+                                         alt="회원가입"/>
                                 </Link>
                             </p>
                         </form>

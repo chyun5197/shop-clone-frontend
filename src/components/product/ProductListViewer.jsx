@@ -2,6 +2,7 @@ import './ProductListViewer.css'
 import axios from "axios";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 
 import Pagination from "../Pagination.jsx"
@@ -42,7 +43,15 @@ const ProductListViewer = () => {
         fetchData();
     }, [params.get("page"), params.get("sorting"), params.get("cate")]);
 
-    if (loading) return /*<div>로딩중..</div>*/;
+    if (loading) return (
+        <div>
+            <div style={{height:"150px"}}></div>
+            <BeatLoader
+                color="#023d86"
+                loading={loading}
+            />
+        </div>
+    )
     if (error) return <div>에러가 발생했습니다</div>;
     if (!productList) return null;
 
@@ -53,17 +62,17 @@ const ProductListViewer = () => {
     const onPageChange = ({ selected, isNext, isPrevious}) => {// console.log(nowPage);
         if (isNext) {
             if(currentPage< totalPage - 1){
-                nav(`/product/list?cate=${params.get("cate")}&page=${currentPage+1}`)
+                nav(`/products/list?cate=${params.get("cate")}&page=${currentPage+1}`)
             }
         }else if(isPrevious){
             if(currentPage > 1){
-                nav(`/product/list?cate=${params.get("cate")}&page=${currentPage-1}`)
+                nav(`/products/list?cate=${params.get("cate")}&page=${currentPage-1}`)
             }
         }else{
             // 현재 페이지 숫자를 로컬스토리지에서 관리해야 다른 브랜드로 넘어가도 1페이지로 시작 가능
             // useState로 관리하면 실행순서상 이전에 있던 페이지가 남은채로 라우팅해버려서 다른 브랜드 클릭시 1페이지로 갱신이 안됨
             localStorage.setItem("page", selected+1);
-            nav(`/product/list?cate=${params.get("cate")}&page=${selected+1}`)
+            nav(`/products/list?cate=${params.get("cate")}&page=${selected+1}`)
         }
         window.scrollTo(0, 0);
     };
@@ -75,7 +84,7 @@ const ProductListViewer = () => {
         // 페이지와 마찬가지 이유로 정렬도 로컬스토리지로 관리
         localStorage.setItem("sorting", sorting);
         localStorage.setItem("page", 1);
-        nav(`/product/list?cate=${params.get("cate")}&sorting=${sorting}`)
+        nav(`/products/list?cate=${params.get("cate")}&sorting=${sorting}`)
     }
 
 
@@ -83,18 +92,19 @@ const ProductListViewer = () => {
         <div>
             <img className='bannerImg' src={localStorage.getItem("banner")} alt='임시'/>
             <div className='contents'> {/*className = 'contents'*/}
-                <div className="hanblank_50"></div>
-                <div className="headcategory-path">
+                {/*<div className="hanblank_50"></div>*/}
+                <div className="headcategory-path headcategory-path-list">
                     <ol>
-                        <li>홈</li>
-                        <li className="category-path">{localStorage.getItem("category")}</li>
-                        <li className="category-path">{localStorage.getItem("brand")}</li>
+                        <li style={{fontSize:"12px"}}>홈</li>
+                        <li style={{fontSize:"12px"}} className="category-path">{localStorage.getItem("category")}</li>
+                        <li style={{fontSize:"12px"}} className="category-path">{localStorage.getItem("brand")}</li>
                     </ol>
                 </div>
-                <div className="hanblank_80"></div>
+                <div className="hanblank_cate_sort"></div>
                 <div className="list-bar">
                     <p className="prdCount">등록 제품:
-                        <strong> {productList.totalCount}개</strong>
+                        <strong style={{fontFamily:"Nanum Gothic Bold"}}> {productList.totalCount}</strong>
+                        개
                     </p>
                     <ul id='type'>
                         <li className='pogrd-hov'><a onClick={() => handleSorting("new")}>신상품</a></li>
@@ -102,11 +112,11 @@ const ProductListViewer = () => {
                         <li className='pogrd-hov'><a onClick={() => handleSorting("desc")}>높은가격</a></li>
                     </ul>
                 </div>
-                <div className="hanblank_70"></div>
+                {/*<div className="hanblank_70"></div>*/}
                 <div className="product-listnormal common_list">
                     <ul className="prdList column5">
                         {productList.productThumbs.map((product) => (
-                            <ProductThumb product={product}/>
+                            <ProductThumb product={product} key={product}/>
                         ))}
                     </ul>
                     {

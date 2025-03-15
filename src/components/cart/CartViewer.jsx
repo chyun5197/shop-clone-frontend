@@ -5,6 +5,7 @@ import axios from "axios";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import btn_count_up from "../../assets/btn_count_up.gif";
 import btn_count_down from "../../assets/btn_count_down.gif";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const CartViewer = () => {
     const [loading, setLoading] = useState(false);
@@ -62,7 +63,12 @@ const CartViewer = () => {
         fetchData();
     }, []);
 
-    if (loading) return ;
+    if (loading) return (
+        <BeatLoader
+            color="#023d86"
+            loading={loading}
+        />
+    );
     if (error) return <div>에러가 발생했습니다</div>;
     if (!cartResponse) return null;
 
@@ -220,6 +226,7 @@ const CartViewer = () => {
 
     return (
         <div className='contents'>
+            <div style={{height: "70px"}}></div>
             <div className="titleArea">
                 <h2>장바구니</h2>
             </div>
@@ -248,22 +255,22 @@ const CartViewer = () => {
                         <col style={{width: "110px"}}/>
                     </colgroup>
                     <thead>
-                        <tr>
-                            <th scope="col">
-                                <input type="checkbox"
-                                       onChange={onCheckboxAll}
-                                />
-                            </th>
-                            <th scope="col">이미지</th>
-                            <th scope="col">상품정보</th>
-                            <th scope="col">판매가</th>
-                            <th scope="col">수량</th>
-                            <th scope="col">적립금</th>
-                            <th scope="col">배송구분</th>
-                            <th scope="col">배송비</th>
-                            <th scope="col">합계</th>
-                            <th scope="col">선택</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">
+                            <input type="checkbox"
+                                   onChange={onCheckboxAll}
+                            />
+                        </th>
+                        <th scope="col">이미지</th>
+                        <th scope="col">상품정보</th>
+                        <th scope="col">판매가</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">적립금</th>
+                        <th scope="col">배송구분</th>
+                        <th scope="col">배송비</th>
+                        <th scope="col">합계</th>
+                        <th scope="col">선택</th>
+                    </tr>
                     </thead>
 
                     {/*주문금액(small)*/}
@@ -271,12 +278,12 @@ const CartViewer = () => {
                     <tr>
                         <td colSpan="10">
                             <strong className="type">[기본배송]</strong> 상품구매금액
-                            <strong> {totalPrice.toLocaleString()} <span
-                            className="displaynone">()</span>
+                            <strong style={{fontFamily:"Nanum Gothic Bold"}}> {totalPrice.toLocaleString()} <span
+                                className="displaynone">()</span>
                             </strong><span className="displaynone"> </span> + 배송비 0
                             (무료)<span className="displaynone"> </span> <span
                             className="displaynone"> - 상품할인금액 0 </span> =
-                            합계 : <strong className="total"><span>{totalPrice.toLocaleString()}</span>원</strong> <span
+                            합계 : <strong className="total" style={{fontFamily:"Nanum Gothic Bold"}}><span>{totalPrice.toLocaleString()}</span>원</strong> <span
                             className="displaynone"> </span>
                         </td>
                     </tr>
@@ -298,19 +305,19 @@ const CartViewer = () => {
                                 <a>
                                     <img
                                         src={item.image}
-                                        onClick={() => nav(`/product/detail?id=${item.productId}`)}
+                                        onClick={() => nav(`/products/detail?id=${item.productId}`)}
                                         alt={item.name}/>
                                 </a>
                             </td>
                             <td className="product">
                                 <strong
-                                    onClick={() => nav(`/product/detail?id=${item.productId}`)}
+                                    onClick={() => nav(`/products/detail?id=${item.productId}`)}
                                     style={{cursor: 'pointer'}}
                                 >
                                     {item.name}
                                 </strong>
                             </td>
-                            <td className="price grey">
+                            <td className="price grey" style={{fontSize:"11px"}}>
                                 <div>
                                     <strong>{item.price.toLocaleString()}원</strong>
                                 </div>
@@ -319,7 +326,7 @@ const CartViewer = () => {
                             <span className="quantity">
                                <input id="quantity_id"
                                       onChange={onChangeQuantity}
-                                      // value={item.count}
+                                   // value={item.count}
                                       value={cartItemInfo[index].count} // 수량 변경 cartItemInfo 사용
                                       size="2"
                                       type="text"
@@ -330,38 +337,38 @@ const CartViewer = () => {
                                    // src="https://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_quantity_up.gif"
                                    alt="수량증가" className="quantityUp"
                                    // section08 - App.jsx 체크박스 onUpdate 참고
-                                   onClick={()=>onChangeQuantityUp(item.cartItemId)}
+                                   onClick={() => onChangeQuantityUp(item.cartItemId)}
                                />
 
                                <img
                                    src={btn_count_down}
                                    // src="https://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_quantity_down.gif"
                                    alt="수량감소" className="quantityDown"
-                                   onClick={()=>cartItemInfo[index].count > 1 ? onChangeQuantityDown(item.cartItemId): {}}
+                                   onClick={() => cartItemInfo[index].count > 1 ? onChangeQuantityDown(item.cartItemId) : {}}
                                    // 1미만 금지
                                />
                             </span>
                                 <a className="changeQuantity">
                                     <img
                                         src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_quantity_modify.gif"
-                                        onClick={()=>onUpdateCartItemCount(item.cartItemId, cartItemInfo[index].count)}
+                                        onClick={() => onUpdateCartItemCount(item.cartItemId, cartItemInfo[index].count)}
                                         alt="변경"/>
                                 </a>
                             </td>
                             <td className="mileage">-</td>
-                            <td className="delivery">기본배송</td>
-                            <td>무료</td>
-                            <td className="total grey">
+                            <td className="delivery" style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"grey"}}>기본배송</td>
+                            <td style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"grey"}}>무료</td>
+                            <td className="total grey" style={{fontSize:"11px"}}>
                                 <strong>{(item.price * item.count).toLocaleString()}원</strong>
                             </td>
                             <td className="button">
                                 <a onClick={onClickNotProvided}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order.gif"
                                     alt="주문하기"/></a>
-                                <a onClick={()=>onClickWish(item.productId)}><img
+                                <a onClick={() => onClickWish(item.productId)}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_wish.gif"
                                     alt="관심상품등록"/></a>
-                                <a onClick={()=>onClickDelete(item.cartItemId)}><img
+                                <a onClick={() => onClickDelete(item.cartItemId)}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_delete.gif"
                                     alt="삭제"/></a>
                             </td>
@@ -379,7 +386,7 @@ const CartViewer = () => {
                 {/*선택상품 제어 버튼*/}
                 <div className="selectorder">
                 <span className="gLeft">
-                    <strong className="text">선택상품을</strong>
+                    <strong className="text" style={{fontFamily:"Nanum Gothic Bold"}}>선택상품을</strong>
                     <a onClick={onCheckedDelete}>
                         <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_delete2.gif" alt="삭제하기"/>
                     </a>
@@ -475,11 +482,14 @@ const CartViewer = () => {
 
                 {/*주문 버튼*/}
                 <div className="justify">
-                    <img onClick={onClickNotProvided} src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_all.gif" alt="전체상품주문"/>
+                    <img onClick={onClickNotProvided}
+                         src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_all.gif" alt="전체상품주문"/>
                     <a> </a>
-                    <img onClick={onClickNotProvided} src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_select.gif" alt="선택상품주문"/>
+                    <img onClick={onClickNotProvided}
+                         src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_select.gif" alt="선택상품주문"/>
                     <span className="gRight">
-                    <img onClick={onClickHome} src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_ing.gif" alt="쇼핑계속하기"/>
+                    <img onClick={onClickHome}
+                         src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_ing.gif" alt="쇼핑계속하기"/>
                 </span>
                 </div>
 

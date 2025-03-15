@@ -1,3 +1,9 @@
+.Header {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
 .Header > div {
     display: flex;
     line-height: 50px;
@@ -115,9 +121,6 @@
 
 
 
-
-
-
 .Header .logline{
     width: 1px;
     height: 8px;
@@ -129,6 +132,7 @@
 
 .Header .header_line2 {
     color: #023d86;
+    background: white;
     font-size: 13px;
     font-weight: 700;
     text-align: center;
@@ -144,7 +148,7 @@
     /*padding-right: 0.5%;*/
 }
 
-.Header .viewgallery,.board{
+.Header .board{
     padding-right: 0.3%;
     /*overflow: visible;*/
 }
@@ -166,16 +170,25 @@
 .Header .btn_blue{
     color: white;
     background: #5C78A7;
-    font-weight: 400;
-    height:40px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Nanum Gothic";
+    width: 62px;
+    height: 40px;
     line-height: 40px;
     overflow: hidden;
-    margin-left: 1px;
+    margin: 15px 0 0 4px;
+    padding: 0 10px;
     border-radius: 5px;
     -webkit-transition: .2s;
     -moz-transition: .2s;
     -ms-transition: .2s;
     border: none;
+
+    &.active {
+        background-color: #c59a31;
+        font-weight: bold;
+    }
 }
 
 .Header .btn_close{
@@ -188,7 +201,6 @@
 /*드롭다운 메뉴*/
 /*원본의 <ul> catedep2 클래스*/
 .Header .brand{
-
     display:none;
     position : absolute;
     width: 160px;

@@ -76,6 +76,7 @@ const RegisterViewer = () => {
     return (
         <div className='contents'>
             {/*{user.phone1}-{user.phone2}-{user.phone3}*/}
+            <div style={{height: "70px"}}></div>
             <div className="titleArea">
                 <h2>회원가입</h2>
             </div>
@@ -122,7 +123,7 @@ const RegisterViewer = () => {
                                 /> <a> </a>
                                 <span className="line-through-ment"> (영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자) </span>
                                 => 자유
-                                <span style={{color:"red"}}> (비번 확인: {user.pw})</span>
+                                <span style={{color: "red"}}> (비번 확인: {user.pw})</span>
                             </td>
                         </tr>
 
@@ -149,7 +150,7 @@ const RegisterViewer = () => {
                                        name='address'
                                        value={user.address}
                                        onChange={onChange}
-                                       // placeholder='주소 입력'
+                                    // placeholder='주소 입력'
                                        type="text" size="60"/> <br/>
                             </td>
                         </tr>
@@ -178,7 +179,7 @@ const RegisterViewer = () => {
                                        onChange={onChange}
                                        maxLength="4"
                                        size="10"
-                                       placeholder=""  type="text"/>
+                                       placeholder="" type="text"/>
                             </td>
                         </tr>
                         </tbody>

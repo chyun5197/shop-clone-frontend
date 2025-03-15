@@ -1,8 +1,11 @@
 import './WishViewer.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const WishViewer = () => {
+    const nav = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [wishResponse, setWishResponse] = useState(null);
@@ -33,7 +36,12 @@ const WishViewer = () => {
         fetchData();
     }, []);
 
-    if (loading) return ;
+    if (loading) return (
+        <BeatLoader
+            color="#023d86"
+            loading={loading}
+        />
+    );
     if (error) return <div>에러가 발생했습니다</div>;
     if (!wishResponse) return null;
 
@@ -175,6 +183,7 @@ const WishViewer = () => {
 
     return (
         <div className="contents">
+            <div style={{height: "70px"}}></div>
             {/*<div>{checkedId}</div>*/}
             <div className="titleArea">
                 <h2>위시리스트</h2>
@@ -195,21 +204,21 @@ const WishViewer = () => {
                         <col style={{width: "110px"}}/>
                     </colgroup>
                     <thead>
-                        <tr>
-                            <th scope="col">
-                                <input type="checkbox"
-                                       onChange={onCheckboxAll}
-                                />
-                            </th>
-                            <th scope="col">이미지</th>
-                            <th scope="col">상품정보</th>
-                            <th scope="col">판매가</th>
-                            <th scope="col">적립금</th>
-                            <th scope="col">배송구분</th>
-                            <th scope="col">배송비</th>
-                            <th scope="col">합계</th>
-                            <th scope="col">선택</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">
+                            <input type="checkbox"
+                                   onChange={onCheckboxAll}
+                            />
+                        </th>
+                        <th scope="col">이미지</th>
+                        <th scope="col">상품정보</th>
+                        <th scope="col">판매가</th>
+                        <th scope="col">적립금</th>
+                        <th scope="col">배송구분</th>
+                        <th scope="col">배송비</th>
+                        <th scope="col">합계</th>
+                        <th scope="col">선택</th>
+                    </tr>
                     </thead>
                     {/*아이템*/}
                     <tbody className="wishListItem">
@@ -226,29 +235,32 @@ const WishViewer = () => {
                             <td className="thumb">
                                 <a>
                                     <img src={wish.image}
+                                         onClick={() => nav(`/products/detail?id=${wish.productId}`)}
                                          alt={wish.productId}/>
                                 </a>
                             </td>
                             <td className="product">
-                                <strong>{wish.name}</strong>
+                                <strong style={{fontFamily:"Nanum Gothic Bold", fontSize:"11px", cursor:"pointer"}}
+                                        onClick={() => nav(`/products/detail?id=${wish.productId}`)}
+                                >{wish.name}</strong>
                             </td>
-                            <td className="price">
+                            <td className="price" style={{fontFamily:"Nanum Gothic Bold", fontSize:"11px"}}>
                                 <strong>{wish.price.toLocaleString()}원</strong>
                             </td>
                             <td className="mileage">-</td>
-                            <td className="delivery">기본배송</td>
-                            <td style={{color:"black"}}>무료</td>
-                            <td className="total">
+                            <td className="delivery" style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"gray"}}>기본배송</td>
+                            <td style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"gray"}}>무료</td>
+                            <td className="total" style={{fontFamily:"Nanum Gothic", fontSize:"11px"}}>
                                 {wish.price.toLocaleString()}원
                             </td>
                             <td className="button">
                                 <a onClick={onClickOrder}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order.gif"
                                     alt="주문하기"/></a>
-                                <a onClick={()=>onClickCart(wish.productId)}><img
+                                <a onClick={() => onClickCart(wish.productId)}><img
                                     src="https://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_basket.gif"
                                     alt="장바구니"/></a>
-                                <a onClick={()=>onClickDelete(wish.wishId)}><img
+                                <a onClick={() => onClickDelete(wish.wishId)}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_delete.gif"
                                     alt="삭제"/></a>
                             </td>
@@ -278,7 +290,8 @@ const WishViewer = () => {
                     <a> </a>
                     <a onClick={onDeleteAll}>
                         <img
-                            src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_empty.gif" alt="관심상품 비우기"/>
+                            src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_empty.gif"
+                            alt="관심상품 비우기"/>
                     </a>
                 </span>
             </div>

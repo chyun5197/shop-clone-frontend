@@ -14,14 +14,12 @@ const Header = () => {
     const cateKeys = Object.keys(categroy);
     const nav = useNavigate()
 
-    const {onBranding} = useContext(PrimaryDispatchContext)
     const primaryInfo = useContext(PrimaryStateContext)
 
     const [middleMenu1, setMiddleMenu1] = useState('로그인');
     const [middleMenu2, setMiddleMenu2] = useState('회원가입');
 
     const onClickHome = () => {
-        onBranding('없음')
         window.scrollTo(0, 0);
         nav(`/`)
         // location.reload();
@@ -112,9 +110,9 @@ const Header = () => {
     }
 
     const [complete, setComplete] = useState(false);
-    const showComplete = () => {
-        setComplete(true)
-    }
+    const handleOpenNewTab = (url) => {
+        window.open(url, "_blank", "noopener, noreferrer");
+    };
 
     return (
         <header className="Header">
@@ -127,7 +125,7 @@ const Header = () => {
                         onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 확인
                     </button>
                     <button className={"btn_grey"+(complete ? " active" : "")}
-                            onClick={()=>nav("/product/search")}>
+                            onClick={()=>nav("/products/search")}>
                         <FaSearch style={{verticalAlign:'sub'}} size='14' />
                     </button>
                     <button
@@ -152,27 +150,33 @@ const Header = () => {
                 <div className="line1_right">
                     <button className={"btn_grey"+(complete ? " active" : "")} onClick={onWishClick}>wish</button>
                     <button className={"btn_grey"+(complete ? " active" : "")} onClick={onCartClick}>cart</button>
-                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={()=>nav("/product/search")}>search</button>
+                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={()=>nav("/products/search")}>search</button>
                 </div>
             </div>
             <div className="header_line2">
-                {/*<img src={logo} onClick={onClickHome} alt=''></img>*/}
                 <img src="https://cdn.hyun-clone.shop/logo.jpg" onClick={onClickHome} alt=''></img>
 
-                {cateKeys.map((key, index) => (<CategoryMenu cateKey={key} complete={complete} index={index} key={key}/>))}
+                {/*<li>Best</li>*/}
+                {cateKeys.map((key, index) => (
+                    <CategoryMenu cateKey={key} complete={complete} index={index} key={key}/>))}
 
-                <li className="viewgallery">
-                    <button className='btn_blue'>베이스컬렉션</button>
-                </li>
-                <li className="viewgallery">
-                    <button className='btn_blue'>어쿠스틱라인</button>
+                <li className="board">
+                    <button className={'btn_blue'+(complete ? " active" : "")}
+                        onClick={()=>nav("/products/best")}>
+                    베스트</button>
                 </li>
                 <li className="board">
-                    <button className='btn_blue'>게시판</button>
+                    <button className='btn_blue'>게시판1</button>
                 </li>
-                <button className='btn_close'><PiUserCircleFill size='45'/></button>
+                <li className="board">
+                    <button className='btn_blue'>게시판2</button>
+                </li>
+                <button className='btn_close'
+                        onClick={() => handleOpenNewTab('https://musicforce.co.kr/')}>
+                    <PiUserCircleFill size='45' style={{verticalAlign: 'top'}}/><br/>
+                    <a style={{fontFamily: "Nanum Gothic Bold"}}>origin</a>
+                </button>
             </div>
-            {/*<img className='bannerImg' src={primaryInfo['banner']} alt=''/>*/}
 
         </header>
     )

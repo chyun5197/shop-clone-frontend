@@ -44,12 +44,13 @@ const MyPageViewer = () => {
 
     return (
         <div className="MyPageViewer contents">
+            <div style={{height: "70px"}}></div>
             {/*{user.phone1}-{user.phone2}-{user.phone3}*/}
             <div className="titleArea">
                 <h2>마이페이지</h2>
             </div>
             <div className="join">
-                <h3 className=" ">기본정보</h3>
+                <h3 className="basic_info">기본정보</h3>
                 <p className="required ">
                     <img src="http://img.echosting.cafe24.com/skin/base/common/ico_required.gif"
                          alt="필수"/> 필수입력사항

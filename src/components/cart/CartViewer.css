@@ -1,5 +1,3 @@
-
-
 .titleArea p {
     display: block;
     margin-block-start: 1em;
@@ -44,6 +42,7 @@ img {
 }
 
 .cartTable{
+    font-family: "Nanum Gothic";
     margin: 0 0 1px;
     border: 1px solid #e5e5e5;
     color: #868686;
@@ -136,6 +135,7 @@ td.thumb img {
 }
 
 .cartTable td.product {
+    font-size: 11px;
     padding-left: 10px;
     text-align: left;
 }
@@ -266,12 +266,14 @@ tbody {
 }
 
 .total_product_price_display_front{
+    font-family: "Nanum Gothic Bold";
     line-height: 58px;
     text-align: center;
     font-size: 23px;
 }
 
 td.total {
+    font-family: "Nanum Gothic Bold";
     color: #343434;
 }
 
@@ -311,7 +313,14 @@ td.total {
 }
 
 .cartTable .grey strong{
+    font-family: "Nanum Gothic Bold";
     color: #868686;
     line-height: 1.5;
 }
+
+.grey{
+    color: #868686;
+}
+
+
 

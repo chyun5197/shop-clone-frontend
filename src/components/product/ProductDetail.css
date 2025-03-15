@@ -1,8 +1,7 @@
-.hanblank_50{
-    /*50->30으로 줄여놓음*/
+.hanblank_160{
     position: relative;
     width: 100%;
-    height: 20px;
+    height: 160px;
     display: block;
     clear: both;
 }
@@ -12,9 +11,12 @@
     height: 10px;
     line-height: 30px;
     margin: 0;
-    padding: 0;
     display: block;
     unicode-bidi: isolate;
+}
+
+.headcategory-path-detail{
+    padding-right: 50px;
 }
 
 .headcategory-path ol{
@@ -199,7 +201,7 @@
     clear: both;
     margin-top: 10px;
     border-bottom: 1px solid #ddd;
-    font-family: 'Noto Sans KR';
+    font-family: 'Nanum Gothic';
     margin: 0;
     padding: 0;
 }
@@ -207,6 +209,7 @@
 /*. pricewrap */
 .custom_de {
     font-size: 34px;
+    font-family: 'Nanum Gothic Bold';
     font-weight: 500;
     color: #2e2e2e;
     margin-left: 0px;
@@ -217,7 +220,8 @@
     font-size: 21px;
     font-weight: 700;
     color: #2e2e2e;
-    font-family: 'Noto Sans KR';
+    /*font-family: 'Noto Sans KR';*/
+    font-family: 'Nanum Gothic Bold';
 }
 
 .price_de{
@@ -251,6 +255,7 @@
 }
 
 .leftper .percent .cost {
+    font-family: "Nanum Gothic Bold";
     font-size: 20px;
     font-weight: 600;
     letter-spacing: -.9px;
@@ -310,11 +315,16 @@ product-detaildesign table tbody th{
     margin-top: 5px;
 }
 
-.record{
+.record th{
     font-size:13px;
     color:#555555;
-
 }
+
+.record td{
+    font-size:14px;
+    color:#555555;
+}
+
 .product-detaildesign table, td, th{
     border-right:none;
     border-left:none;
@@ -416,7 +426,6 @@ product-detaildesign table tbody th{
     border: 1px solid #d4d8d9;
     border-radius: 3px 0 0 3px;
     color: #353535;
-    font-family: "돋움", Dotum;
     vertical-align: middle;
     font-size: 12px;
 }
@@ -440,7 +449,7 @@ product-detaildesign table tbody th{
 
 .totalProducts table .right {
     padding-right: 9px;
-    font-weight: bold;
+    font-family: "Nanum Gothic Bold";
     color: #353535;
     text-align: right;
 }
@@ -458,6 +467,7 @@ product-detaildesign table tbody th{
 }
 
 .totalProducts tfoot td .total em {
+    font-family: "Nanum Gothic Bold";
     font-style: normal;
     font-size: 34px;
 }
@@ -500,6 +510,7 @@ product-detaildesign table tbody th{
 }
 
 .product-action .btnArea a.first {
+    font-family: "Nanum Gothic Bold";
     text-decoration: none;
     margin-left: 0;
     color: #fff;
@@ -623,6 +634,7 @@ center img{
 
 .addCart, .wishList{
     cursor: pointer;
+    font-family: "Nanum Gothic Bold";
 }
 
 /*naver pay*/

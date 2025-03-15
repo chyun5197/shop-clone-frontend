@@ -13,6 +13,8 @@ import ProductDetail from "./components/product/ProductDetail.jsx";
 import RegisterViewer from "./components/account/RegisterViewer.jsx";
 import ProductList from "./pages/product/ProductList.jsx";
 import LoginForm from "./pages/LoginForm.jsx";
+import axios from "axios";
+import ProductBest from "./pages/product/ProductBest.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -70,21 +72,15 @@ function App() {
         })
     }, [])
 
-    const memoizedDispatch = useMemo(()=>{
-        return {onBranding, onLocate};
-    }, [])
-
-    // console.log(import.meta.env.VITE_API_URL)
-
+    // return <div><h1>점검중</h1></div>
 
     return (
         <>
-            
             <div className="all_wrap">
                 <CookiesProvider>
-                <PrimaryStateContext.Provider value={data}>
-                    <PrimaryDispatchContext.Provider value={{onBranding, onLocate}}>
-                        <Header/>
+                    <PrimaryStateContext.Provider value={data}>
+                        <PrimaryDispatchContext.Provider value={{onBranding, onLocate}}>
+                            <Header/>
                             <div id="content_wrap">
                                 <div id="container">
                                     <Routes>
@@ -92,17 +88,18 @@ function App() {
                                         <Route path="/myshop/wishlist" element={<Wishlist/>}/>
                                         <Route path="/myshop" element={<MyPage/>}/>
                                         <Route path="/myshop/cart" element={<Cart/>}/>
-                                        <Route path="/product/list" element={<ProductList/>}/>
-                                        <Route path="/product/detail" element={<ProductDetail/>}/>
-                                        <Route path="/product/search" element={<ProductSearch/>}/>
+                                        <Route path="/products/list" element={<ProductList/>}/>
+                                        <Route path="/products/detail" element={<ProductDetail/>}/>
+                                        <Route path="/products/search" element={<ProductSearch/>}/>
+                                        <Route path="/products/best" element={<ProductBest/>}/>
                                         <Route path="/login-form" element={<LoginForm/>}/>
                                         <Route path="/register" element={<RegisterViewer/>}/>
                                         <Route path="*" element={<Notfound/>}/>
                                     </Routes>
                                 </div>
                             </div>
-                    </PrimaryDispatchContext.Provider>
-                </PrimaryStateContext.Provider>
+                        </PrimaryDispatchContext.Provider>
+                    </PrimaryStateContext.Provider>
                 </CookiesProvider>
             </div>
         </>

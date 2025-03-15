@@ -71,15 +71,15 @@ const ProductSearchViewer = () => {
         }
     };
 
-
     return (
         <div className='contents'>
+            <div style={{height: "100px"}}></div>
             <div className="titleArea">
                 <h2>상품검색</h2>
             </div>
 
-            <div style={{ fontSize: '12px' }}>
-                등록된 상품: 3509개
+            <div style={{fontSize: '12px'}}>
+                등록된 상품: <strong style={{fontFamily:"Nanum Gothic Bold"}}>3509</strong>개
             </div>
 
             <div className="searchbox">
@@ -110,11 +110,13 @@ const ProductSearchViewer = () => {
                             name='keyword'
                             value={search.keyword}
                             onChange={onChangeSearch}
+                            onKeyDown={(e)=>e.key === "Enter"? onSubmit(e):undefined}
                             type='text'
                         />
+                        <a style={{color:"gray"}}> 예시) es-335, mccarty, strat 2024, classic antique, martin om.. </a>
                     </div>
                     <div className="price">
-                        <strong>판매가격대</strong>
+                        <strong>가격대</strong>
                         <input
                             id='product_price1'
                             name='start'
@@ -122,8 +124,8 @@ const ProductSearchViewer = () => {
                             onChange={onChangeSearch}
                             type='number'
                             step='1000000'
-                        />
-                        ~
+                        /><a> </a>
+                        ~ <a> </a>
                         <input
                             id='product_price2'
                             name='end'
@@ -144,7 +146,7 @@ const ProductSearchViewer = () => {
 
                     </div>
                     <p></p>
-                    <div >
+                    <div>
                         <img
                             onClick={onSubmit} className='button'
                             src="http://img.echosting.cafe24.com/skin/base_ko_KR/product/btn_search2.gif" alt="검색"/>
@@ -153,14 +155,14 @@ const ProductSearchViewer = () => {
             </div>
 
             <div className='recordCount'>
-                총 <strong> {productList.totalCount}</strong>개의 상품이 검색되었습니다. [최대 300개까지만 조회하도록 설정]
+                총 <strong style={{fontFamily:"Nanum Gothic Bold"}}> {productList.totalCount}</strong>개의 상품이 검색되었습니다. [최대 300개까지만 조회하도록 설정]
             </div>
             <p></p>
 
             <div className="product-listnormal common_list">
                 <ul className="prdList column5">
                     {productList.productThumbs.map((product) => (
-                        <ProductThumb product={product}/>
+                        <ProductThumb product={product} key={product}/>
                     ))}
                 </ul>
             </div>

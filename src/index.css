@@ -8,6 +8,11 @@
     src: url("/NanumGothic-Bold.ttf");
 }
 
+@font-face {
+    font-family: "Nanum Gothic ExtraBold";
+    src: url("/NanumGothic-ExtraBold.ttf");
+}
+
 body {
     /*font: 11px "Nanum Gothic";*/
     font-size: 11.5px ;

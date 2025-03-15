@@ -8,6 +8,7 @@ import notice_3 from '../../assets/Notice-3.jpg'
 import {useNavigate, useSearchParams, Link} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const ProductDetail = () => {
     const [params, setParams] = useSearchParams();
@@ -39,7 +40,15 @@ const ProductDetail = () => {
         fetchData();
     }, []);
 
-    if (loading) return /*<div>로딩중..</div>*/;
+    if (loading) return (
+        <div>
+            <div style={{height: "150px"}}></div>
+            <BeatLoader
+                color="#023d86"
+                loading={loading}
+            />
+        </div>
+    )/*<div>로딩중..</div>*/;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!product) return null;
 
@@ -95,14 +104,15 @@ const ProductDetail = () => {
 
     return (
         <div>
-            <div className="hanblank_50"></div>
-            <div className="headcategory-path">
+            <div className="hanblank_160"></div>
+            <div className="headcategory-path headcategory-path-detail">
                 <ol>
-                    <li>홈</li>
-                    <li className="category-path">Guitars 1</li>
-                    <li className="category-path">Fender</li>
+                    <li style={{fontSize:"11px"}}>홈</li>
+                    <li style={{fontSize:"11px"}} className="category-path">{product.category}</li>
+                    <li style={{fontSize:"11px"}} className="category-path">{product.brand}</li>
                 </ol>
             </div>
+            <div style={{height:"12px"}}></div>
             <div className="product-detail">
                 <div className="detailArea">
                     {/*이미지 영역*/}
@@ -155,13 +165,13 @@ const ProductDetail = () => {
                                         <th scope="row">
                                             <div className="sqb"></div>
                                             <span>제조사</span></th>
-                                        <td><span>Fender</span></td>
+                                        <td><span>{product.brand}</span></td>
                                     </tr>
                                     <tr className="record">
                                         <th scope="row">
                                             <div className="sqb"></div>
                                             <span>원산지</span></th>
-                                        <td><span>USA</span></td>
+                                        <td><span>{product.country}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
