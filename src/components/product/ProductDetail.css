@@ -557,7 +557,7 @@ center img{
 }
 
 .product-additional{
-    padding: 20px 0px 60px;
+    padding: 20px 80px 60px;
     color: #8f8f91;
     line-height: 1.8em;
     clear: both;
@@ -583,6 +583,7 @@ center img{
     zoom: 1;
     margin-top: 10px;
     border-bottom: 1px solid #111;
+    line-height: 1.8em;
 }
 
 .product-additional .link ul{
@@ -635,6 +636,20 @@ center img{
 .addCart, .wishList{
     cursor: pointer;
     font-family: "Nanum Gothic Bold";
+}
+
+.imageList{
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+.imageList .img{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    text-align: center;
 }
 
 /*naver pay*/

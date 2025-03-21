@@ -122,7 +122,7 @@ const Header = () => {
                     <button
                         id = "page_check"
                         className={"btn_check"+(complete ? " active" : "")}
-                        onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 확인
+                        onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 보기
                     </button>
                     <button className={"btn_grey"+(complete ? " active" : "")}
                             onClick={()=>nav("/products/search")}>

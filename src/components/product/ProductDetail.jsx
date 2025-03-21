@@ -13,6 +13,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 const ProductDetail = () => {
     const [params, setParams] = useSearchParams();
 
+    const [detailImage, setDetailImage] = useState();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -36,6 +37,7 @@ const ProductDetail = () => {
             }
             setLoading(false);
             window.scrollTo(0, 0);
+
         };
         fetchData();
     }, []);
@@ -296,9 +298,9 @@ const ProductDetail = () => {
             </div>
             <div className="middle-blank"></div>
             <center>
-                <p><a><img src={notice_1} /></a></p>
-                <p><a><img src={notice_2} /></a></p>
-                <p><a><img src={notice_3} /></a></p>
+                <p><a><img src={notice_1} alt={'notice_1'}/></a></p>
+                <p><a><img src={notice_2} alt={'notice_2'}/></a></p>
+                <p><a><img src={notice_3} alt={'notice_3'}/></a></p>
                 {/*<h2>*/}
                 {/*    {params.get("id")}번 상품 상세 페이지*/}
                 {/*</h2>*/}
@@ -311,17 +313,25 @@ const ProductDetail = () => {
                 {/*/>*/}
             </center>
             <div className="product-additional">
-                    <div id="prdDetail" className="posthan">
-                        <div className="no-name"></div>
-                        <div className="link">
-                            <ul>
-                                <li className="selected"><a>상품상세정보</a></li>
-                                <li ><a>관련상품</a></li>
-                                <li ><a>쇼핑몰 이용정보</a></li>
-                            </ul>
-                        </div>
+                <div id="prdDetail" className="posthan">
+                    <div className="no-name"></div>
+                    <div className="link">
+                        <ul>
+                            <li className="selected"><a>상품상세정보</a></li>
+                            <li><a>관련상품</a></li>
+                            <li><a>쇼핑몰 이용정보</a></li>
+                        </ul>
+
+                    </div>
+                    <p><br/></p>
+                    <p><br/></p>
+                    <div className="imageList">
+                        {product.imageList.map((image, index) => (
+                            <img src={image} key={index} alt={'detail_image' + 1 + index}/>
+                        ))}
                     </div>
                 </div>
+            </div>
         </div>
     )
 };

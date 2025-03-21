@@ -180,6 +180,27 @@ const WishViewer = () => {
         }
     }
 
+    // 랜덤 위시 추가하기
+    const AddRandomWish = async () => {
+        try {
+            const response = await axios({
+                url: import.meta.env.VITE_API_URL + `/api/wish/random`,
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+                withCredentials: true,
+            });
+            if (response.status === 201) {
+                alert('랜덤한 상품이 위시에 추가되었습니다!');
+                location.reload();
+            }
+        } catch (error) {
+            alert('에러 발생');
+        }
+    }
+
 
     return (
         <div className="contents">
@@ -295,11 +316,11 @@ const WishViewer = () => {
                     </a>
                 </span>
             </div>
+            <button style={{fontFamily:"Nanum Gothic", fontSize:"17px"}}
+                onClick={AddRandomWish}>
+            위시 추가하기(랜덤)
+            </button>
 
-
-            {/*{wishResponse.map((wish) => (*/}
-            {/*    <li key={wish.id}>{wish.name} {wish.price}원</li>*/}
-            {/*))}*/}
         </div>
     )
 }
