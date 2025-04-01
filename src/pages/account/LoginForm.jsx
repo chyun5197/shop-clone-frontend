@@ -1,4 +1,4 @@
-import LoginFormViewer from "../components/account/LoginFormViewer.jsx";
+import LoginFormViewer from "../../components/account/LoginFormViewer.jsx";
 
 const LoginForm = () => {
     return <div>

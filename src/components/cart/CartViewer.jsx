@@ -53,7 +53,7 @@ const CartViewer = () => {
                 })
                 setTotalPrice(total);
                 setCartItemInfo(infoArr);
-                console.log(cartItemInfo);
+                // console.log(cartItemInfo);
 
             } catch (e) {
                 setError(e);
@@ -123,7 +123,7 @@ const CartViewer = () => {
                 alert('수량이 변경되었습니다');
             }
         } catch (error) {
-            console.log(count);
+            // console.log(count);
             alert('에러');
         }
         location.reload();
@@ -215,14 +215,42 @@ const CartViewer = () => {
         }
     }
 
-
-
     // 계속 쇼핑하기 navigate
     const onClickHome = () => {
         window.scrollTo(0, 0)
         nav('/')
     }
 
+
+    // 주문정보 localStorage 저장 [{productId:value, quantity:value}, {productId:value, quantity:value}...]
+    // 체크한 선택상품주문
+    const onCheckedOrder = async () => {
+        const orderSheetRequest = []
+        cartResponse.cartItemList.map((item) => {
+            if (checkedId.includes(item.cartItemId)) { // 장바구니ID로 체크
+                // console.log(item.cartItemId);
+                orderSheetRequest.push({
+                    productId: item.productId, // 상품ID push
+                    quantity: item.count
+                });
+            }
+        })
+        localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest)); // 주문 아이템 번호 리스트
+        nav('/myshop/order/sheet')
+    }
+
+    // 전체상품주문
+    const onAllOrder = async () => {
+        const orderSheetRequest = []
+        cartResponse.cartItemList.map((item) => {
+            orderSheetRequest.push({
+                productId: item.productId,
+                quantity: item.count
+            });
+        })
+        localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest)); // 주문 아이템 번호 리스트
+        nav('/myshop/order/sheet')
+    }
 
     return (
         <div className='contents'>
@@ -312,8 +340,7 @@ const CartViewer = () => {
                             <td className="product">
                                 <strong
                                     onClick={() => nav(`/products/detail?id=${item.productId}`)}
-                                    style={{cursor: 'pointer'}}
-                                >
+                                    style={{cursor: 'pointer'}}>
                                     {item.name}
                                 </strong>
                             </td>
@@ -482,10 +509,10 @@ const CartViewer = () => {
 
                 {/*주문 버튼*/}
                 <div className="justify">
-                    <img onClick={onClickNotProvided}
+                    <img onClick={onAllOrder}
                          src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_all.gif" alt="전체상품주문"/>
                     <a> </a>
-                    <img onClick={onClickNotProvided}
+                    <img onClick={onCheckedOrder}
                          src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_select.gif" alt="선택상품주문"/>
                     <span className="gRight">
                     <img onClick={onClickHome}

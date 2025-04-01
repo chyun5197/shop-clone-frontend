@@ -4,6 +4,9 @@ import {useContext, useState} from "react";
 import {PrimaryStateContext} from "../../App.jsx";
 import axios from "axios";
 import {useCookies} from "react-cookie";
+import logo_google from "../../assets/login_google.png"
+import logo_kakao from "../../assets/login_kakao.png"
+import logo_naver from "../../assets/login_naver.png"
 
 const LoginFormViewer = () => {
     const nav = useNavigate()
@@ -99,7 +102,31 @@ const LoginFormViewer = () => {
                                 </Link>
                             </p>
                         </form>
-
+                        <br/>
+                        <div className="oauth-logo">
+                            <div className="tit">
+                                <div className="tit-before"></div>
+                                소셜 계정으로 간편 로그인
+                                <div className="tit-before"></div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href={import.meta.env.VITE_OAUTH_URL+"naver"}>
+                                        <img src={logo_naver} alt={"logo_naver"}/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={import.meta.env.VITE_OAUTH_URL+"kakao"}>
+                                        <img src={logo_kakao} alt={"logo_kakao"}/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={import.meta.env.VITE_OAUTH_URL+"google"}>
+                                        <img src={logo_google} alt={"logo_google"}/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
                     </fieldset>
                 </div>

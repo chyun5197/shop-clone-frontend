@@ -1,8 +1,10 @@
 import './RegisterViewer.css'
-import {useState, useRef, useEffect, useContext} from "react";
+import {useState, useRef} from "react";
 import axios from "axios";
-import {PrimaryStateContext} from "../../App.jsx";
 import {useNavigate} from "react-router-dom";
+import logo_naver from "../../assets/login_naver.png";
+import logo_kakao from "../../assets/login_kakao.png";
+import logo_google from "../../assets/login_google.png";
 const RegisterViewer = () => {
     const nav = useNavigate()
     // const primaryInfo = useContext(PrimaryStateContext)
@@ -21,7 +23,6 @@ const RegisterViewer = () => {
             ...user,
             [e.target.name]: e.target.value,
         })
-
     }
     // focus 용도
     const idRef = useRef();
@@ -189,6 +190,30 @@ const RegisterViewer = () => {
 
             <div onClick={onSubmit} className="ec-base-button">
                 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/btn_member_join1.gif" alt="회원가입"/>
+            </div>
+            <div className="oauth-logo logo-register">
+                <div className="tit">
+                    <div className="tit-before"></div>
+                    소셜 계정으로 간편 회원가입
+                    <div className="tit-before"></div>
+                </div>
+                <ul>
+                    <li>
+                        <a href={import.meta.env.VITE_OAUTH_URL+"naver"}>
+                            <img src={logo_naver} alt={"logo_naver"}/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href={import.meta.env.VITE_OAUTH_URL+"kakao"}>
+                            <img src={logo_kakao} alt={"logo_kakao"}/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href={import.meta.env.VITE_OAUTH_URL+"google"}>
+                            <img src={logo_google} alt={"logo_google"}/>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     )

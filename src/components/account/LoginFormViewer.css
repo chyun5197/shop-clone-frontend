@@ -111,3 +111,45 @@
     margin-inline-end: 0px;
     unicode-bidi: isolate;
 }
+
+.oauth-logo img{
+    width: 60px;
+}
+
+.oauth-logo ul{
+    width: 65%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-left: 0;
+    /*padding-top: 24px;*/
+    margin-left : 5px;
+}
+
+.tit{
+    /*padding-left: 30px;*/
+    font-size: 14px;
+    color: #5c667b;
+    line-height: 30px;
+}
+
+.tit-before{
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 40px;
+    height: 1px;
+    background-color: #eaedf4;
+    display: inline-block;
+    vertical-align: super;
+    content: '';
+}
+
+/*.tit:after {*/
+/*    margin-left: 5px;*/
+/*    width: 30px;*/
+/*    height: 1px;*/
+/*    background-color: #eaedf4;*/
+/*    display: inline-block;*/
+/*    vertical-align: super;*/
+/*    content: '';*/
+/*}*/

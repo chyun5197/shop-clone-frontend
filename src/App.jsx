@@ -7,14 +7,16 @@ import Wishlist from "./pages/myInfo/Wishlist.jsx";
 import Cart from "./pages/myInfo/Cart.jsx";
 import Notfound from "./pages/Notfound.jsx";
 import MyPage from "./pages/myInfo/MyPage.jsx";
-import {createContext, useCallback, useContext, useEffect, useMemo, useReducer, useState} from "react";
+import {createContext, useCallback, useEffect, useReducer} from "react";
 import ProductSearch from "./pages/product/ProductSearch.jsx";
 import ProductDetail from "./components/product/ProductDetail.jsx";
-import RegisterViewer from "./components/account/RegisterViewer.jsx";
 import ProductList from "./pages/product/ProductList.jsx";
-import LoginForm from "./pages/LoginForm.jsx";
+import LoginForm from "./pages/account/LoginForm.jsx";
 import axios from "axios";
 import ProductBest from "./pages/product/ProductBest.jsx";
+import Register from "./pages/account/Register.jsx";
+import OauthHandler from "./pages/OauthHandler.jsx";
+import OrderSheet from "./pages/myInfo/OrderSheet.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -88,12 +90,14 @@ function App() {
                                         <Route path="/myshop/wishlist" element={<Wishlist/>}/>
                                         <Route path="/myshop" element={<MyPage/>}/>
                                         <Route path="/myshop/cart" element={<Cart/>}/>
+                                        <Route path="/myshop/order/sheet" element={<OrderSheet/>}/>
                                         <Route path="/products/list" element={<ProductList/>}/>
                                         <Route path="/products/detail" element={<ProductDetail/>}/>
                                         <Route path="/products/search" element={<ProductSearch/>}/>
                                         <Route path="/products/best" element={<ProductBest/>}/>
                                         <Route path="/login-form" element={<LoginForm/>}/>
-                                        <Route path="/register" element={<RegisterViewer/>}/>
+                                        <Route path="/register" element={<Register/>}/>
+                                        <Route path="/oauth/success" element={<OauthHandler/>}/>
                                         <Route path="*" element={<Notfound/>}/>
                                     </Routes>
                                 </div>

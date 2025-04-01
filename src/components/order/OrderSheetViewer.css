@@ -1,0 +1,63 @@
+/*ul {*/
+/*    display: block;*/
+/*    list-style-type: disc;*/
+/*    margin-block-start: 1em;*/
+/*    margin-block-end: 1em;*/
+/*    margin-inline-start: 0px;*/
+/*    margin-inline-end: 0px;*/
+/*    padding-inline-start: 40px;*/
+/*    unicode-bidi: isolate;*/
+/*}*/
+
+.controlInfo {
+    padding: 10px 0 8px 10px;
+    border-top: 1px solid #e8e5e4;
+    color: #f76560;
+    font-size: 11px;
+    line-height: 1.5;
+    background: #fff8f5;
+    margin: 0;
+}
+
+.orderListArea .title {
+    position: relative;
+    height: 30px;
+    margin: 0;
+    padding: 0 0 0 9px;
+    border: 1px solid #d7d5d5;
+    border-bottom: 0;
+    line-height: 30px;
+    background: #f6f6f6;
+}
+
+.orderListArea .order-normtitle .button {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+.orderListArea .order-normtitle p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.orderThead{
+    display: table-header-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.orderTheadTr th{
+    padding: 11px 0 9px;
+    border-right: 1px solid #e9e9e9;
+    font-weight: normal;
+    background: #fbfafa;
+}
+

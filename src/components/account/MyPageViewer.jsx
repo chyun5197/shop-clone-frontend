@@ -66,8 +66,8 @@ const MyPageViewer = () => {
                                 <input
                                     name='id'
                                     placeholder='아이디 입력'
-                                    value={user.email}
-                                    type="text"
+                                    value={user.oauthId}
+                                    type="text" size="40"
                                 /> <a> </a>
                             </td>
                         </tr>
@@ -119,18 +119,18 @@ const MyPageViewer = () => {
                             <td>
                                 <input id="phone1"
                                        name='phone1'
-                                       value={user.phone.slice(0, 3)}
+                                       value={user.phone===null?"":user.phone.slice(0, 3)}
                                        maxLength="4" size="10"
                                        type="text"/> - <a> </a>
                                 <a> </a>
                                 <input id="phone2"
                                        name='phone2'
-                                       value={user.phone.slice(3, 7)}
+                                       value={user.phone===null?"":user.phone.slice(3, 7)}
                                        maxLength="4" size="10"
                                        type="text"/> - <a> </a>
                                 <input id="phone3"
                                        name='phone3'
-                                       value={user.phone.slice(7)}
+                                       value={user.phone===null?"":user.phone.slice(7)}
                                        maxLength="4"
                                        size="10"
                                        placeholder="" type="text"/>
