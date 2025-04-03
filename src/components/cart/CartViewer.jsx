@@ -235,6 +235,10 @@ const CartViewer = () => {
                 });
             }
         })
+        if (orderSheetRequest.length === 0) {
+            alert("구매할 상품을 선택해주세요")
+            return
+        }
         localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest)); // 주문 아이템 번호 리스트
         nav('/myshop/order/sheet')
     }
@@ -382,7 +386,10 @@ const CartViewer = () => {
                                         alt="변경"/>
                                 </a>
                             </td>
-                            <td className="mileage">-</td>
+                            <td className="mileage"  style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"grey"}}>
+                                <img src="//img.echosting.cafe24.com/design/common/icon_cash.gif"/>
+                                {(item.price / 100).toLocaleString()}원
+                            </td>
                             <td className="delivery" style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"grey"}}>기본배송</td>
                             <td style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"grey"}}>무료</td>
                             <td className="total grey" style={{fontSize:"11px"}}>

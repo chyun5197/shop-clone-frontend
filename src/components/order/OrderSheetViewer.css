@@ -61,3 +61,17 @@
     background: #fbfafa;
 }
 
+.controlInfo .alert{
+    padding: 0 0 0 20px;
+    font-size: 11px;
+    background: url(http://img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 0 1px;
+}
+
+.controlInfo .alert2{
+    padding: 0 0 0 20px;
+    background: url(http://img.echosting.cafe24.com/skin/base/common/ico_info.gif) no-repeat 0 1px;
+}
+
+.orderhistorylistitem .displaynone{
+    display: none;
+}

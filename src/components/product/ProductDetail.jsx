@@ -12,8 +12,8 @@ import BeatLoader from "react-spinners/BeatLoader";
 
 const ProductDetail = () => {
     const [params, setParams] = useSearchParams();
+    const nav = useNavigate();
 
-    const [detailImage, setDetailImage] = useState();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -53,6 +53,17 @@ const ProductDetail = () => {
     )/*<div>로딩중..</div>*/;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!product) return null;
+
+    // 구매하기
+    const onClickOrder = (productId) => {
+        const orderSheetRequest = []
+        orderSheetRequest.push({
+            productId: productId,
+            quantity: 1,
+        })
+        localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest));
+        nav('/myshop/order/sheet')
+    }
 
     // 장바구니 등록
     const onClickAddCart = async (e) => {
@@ -248,7 +259,8 @@ const ProductDetail = () => {
                         </div>
                         <div className="product-action">
                             <div className="btnArea">
-                                <a className="first">구매하기</a>
+                                <a className="first"  style={{cursor: 'pointer'}}
+                                   onClick={()=>onClickOrder(product.id)}>구매하기</a>
                                 <a className="addCart" onClick={onClickAddCart}>장바구니</a>
                                 <span className="displaynone">SOLD OUT</span>
                                 <a className="wishList" onClick={onClickWish}>위시리스트</a>

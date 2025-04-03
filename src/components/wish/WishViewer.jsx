@@ -45,9 +45,6 @@ const WishViewer = () => {
     if (error) return <div>에러가 발생했습니다</div>;
     if (!wishResponse) return null;
 
-    // 조회
-    const onClickOrder = () => {alert('준비중입니다')}
-
     // 체크박스
     const onCheckboxAll = () => {
         if(!isAllChecked){ // 전체 체크
@@ -68,6 +65,17 @@ const WishViewer = () => {
         }else{ // 삭제
             setCheckedId(checkedId.filter((id) => id !== productId));
         }
+    }
+
+    // 클릭한 상품 주문하기
+    const onClickOrder = (productId) => {
+        const orderSheetRequest = []
+        orderSheetRequest.push({
+            productId: productId,
+            quantity: 1,
+        })
+        localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest));
+        nav('/myshop/order/sheet')
     }
 
     // 클릭한 상품 장바구니 추가
@@ -156,6 +164,19 @@ const WishViewer = () => {
         } catch (error) {
             alert('에러 발생');
         }
+    }
+
+    // 전체상품주문
+    const onAllOrder = async () => {
+        const orderSheetRequest = []
+        wishResponse.map((item) => {
+            orderSheetRequest.push({
+                productId: item.productId,
+                quantity: 1
+            });
+        })
+        localStorage.setItem('orderSheetRequest', JSON.stringify(orderSheetRequest)); // 주문 아이템 번호 리스트
+        nav('/myshop/order/sheet')
     }
 
     // 위시리스트 비우기
@@ -268,14 +289,18 @@ const WishViewer = () => {
                             <td className="price" style={{fontFamily:"Nanum Gothic Bold", fontSize:"11px"}}>
                                 <strong>{wish.price.toLocaleString()}원</strong>
                             </td>
-                            <td className="mileage">-</td>
+                            <td className="mileage"
+                                style={{fontFamily: "Nanum Gothic", fontSize: "11px", color: "grey"}}>
+                                <img src="//img.echosting.cafe24.com/design/common/icon_cash.gif"/>
+                                {(wish.price / 100).toLocaleString()}원
+                            </td>
                             <td className="delivery" style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"gray"}}>기본배송</td>
                             <td style={{fontFamily:"Nanum Gothic", fontSize:"11px", color:"gray"}}>무료</td>
                             <td className="total" style={{fontFamily:"Nanum Gothic", fontSize:"11px"}}>
                                 {wish.price.toLocaleString()}원
                             </td>
                             <td className="button">
-                                <a onClick={onClickOrder}><img
+                                <a onClick={() => onClickOrder(wish.productId)}><img
                                     src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order.gif"
                                     alt="주문하기"/></a>
                                 <a onClick={() => onClickCart(wish.productId)}><img
@@ -304,9 +329,10 @@ const WishViewer = () => {
                     </a>
                 </span>
                 <span className="gRight">
-                    <a onClick={onClickOrder}>
+                    <a onClick={onAllOrder}>
                         <img
-                            src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_all.gif" alt="전체상품주문"/>
+                            src="http://img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_all.gif"
+                            alt="전체상품주문"/>
                     </a>
                     <a> </a>
                     <a onClick={onDeleteAll}>

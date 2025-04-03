@@ -90,6 +90,16 @@ const Header = () => {
         }
     }
 
+    // 주문조회 이동
+    const onOrderClick = () =>{
+        if (!primaryInfo.isLogin) {
+            alert('로그인을 해주세요')
+        }else{
+            window.scrollTo(0, 0);
+            nav("/myshop/order/list")
+        }
+    }
+
     // 관심상품 이동
     const onWishClick = () => {
         if (!primaryInfo.isLogin) {
@@ -141,11 +151,7 @@ const Header = () => {
                     <span className="logline"></span>
                     <a className={"isCompleted"+(complete ? " active" : "")} onClick={onCartClick}>장바구니</a>
                     <span className="logline"></span>
-                    <a>주문조회</a>
-                    <span className="logline"></span>
-                    <a>International Shipping Available</a>
-                    <span className="logline"></span>
-                    <a>Global Tax Free</a>
+                    <a className={"isCompleted"+(complete ? " active" : "")} onClick={onOrderClick}>주문조회</a>
                 </div>
                 <div className="line1_right">
                     <button className={"btn_grey"+(complete ? " active" : "")} onClick={onWishClick}>wish</button>

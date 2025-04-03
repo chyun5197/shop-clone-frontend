@@ -12,11 +12,11 @@ import ProductSearch from "./pages/product/ProductSearch.jsx";
 import ProductDetail from "./components/product/ProductDetail.jsx";
 import ProductList from "./pages/product/ProductList.jsx";
 import LoginForm from "./pages/account/LoginForm.jsx";
-import axios from "axios";
 import ProductBest from "./pages/product/ProductBest.jsx";
 import Register from "./pages/account/Register.jsx";
 import OauthHandler from "./pages/OauthHandler.jsx";
 import OrderSheet from "./pages/myInfo/OrderSheet.jsx";
+import OrderList from "./pages/myInfo/OrderList.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -91,6 +91,7 @@ function App() {
                                         <Route path="/myshop" element={<MyPage/>}/>
                                         <Route path="/myshop/cart" element={<Cart/>}/>
                                         <Route path="/myshop/order/sheet" element={<OrderSheet/>}/>
+                                        <Route path="/myshop/order/list" element={<OrderList/>}/>
                                         <Route path="/products/list" element={<ProductList/>}/>
                                         <Route path="/products/detail" element={<ProductDetail/>}/>
                                         <Route path="/products/search" element={<ProductSearch/>}/>

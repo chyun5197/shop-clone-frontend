@@ -3,12 +3,12 @@ import orderImg from "../../assets/img_step2.png";
 import {useEffect, useRef, useState} from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from "axios";
-import uuid from 'react-uuid'
+import {useNavigate} from "react-router-dom";
 
 const OrderSheetViewer = () => {
     const { IMP } = window; // IMP(아임포트 모듈) 객체를 IMP window에서 추출
     IMP.init('imp06008388') // 고객사 식별코드
-
+    const nav = useNavigate()
     const [user, setUser] = useState({
         fullName:"",
         email:"",
@@ -50,7 +50,7 @@ const OrderSheetViewer = () => {
                 });
 
                 // 회원정보
-                let member = response.data.orderMemberInfo
+                // let member = response.data.orderMemberInfo
 
                 // if (member.name)
                 // setUser({...user, 'fullName': member.name});
@@ -138,10 +138,12 @@ const OrderSheetViewer = () => {
             },
             async (response) => {
                 if (response.error_code != null) {
-                    return alert(`결제에 실패하였습니다. 에러 내용: ${response.error_msg}`);
+                    return alert(`결제 요청에 실패하였습니다. \n실패 사유: ${response.error_msg}`);
+                }
+                else if (response.success === false){
+                    return alert("결제를 취소하였습니다.")
                 }
                 let impUid = response.imp_uid; // 포트원 결제 고유번호
-                console.log(response.imp_uid);
 
                 // 결제 검증 및 결제 완료 처리(->스프링)
                 try {
@@ -152,9 +154,9 @@ const OrderSheetViewer = () => {
                             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                             'Content-Type': 'application/json'
                         },
-                        data: { // imp_uid와 merchant_uid
-                            impUid: 'imp_222921162176',
-                            merchantUid: "payement-61e26059-20ad"
+                        data: {
+                            impUid: impUid,
+                            merchantUid: merchantId
                         },
                         method: 'POST',
                         withCredentials: true,
@@ -162,8 +164,10 @@ const OrderSheetViewer = () => {
                     console.log(notified.data);
                     if (notified.data === "complete") {
                         alert("결제가 정상적으로 완료되었습니다.")
+                        window.scrollTo(0, 0);
+                        nav("/myshop/order/list")
                     }else{
-                        alert("결제가 취소되었습니다.")
+                        alert("결제 요청 금액이 잘못되어 결제가 취소되었습니다.")
                     }
                 } catch (error) {
                     alert('결제 서버 에러');
@@ -205,7 +209,7 @@ const OrderSheetViewer = () => {
             </p>
 
             <ul className="controlInfo">
-                <li>상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서 가능합니다.</li>
+                <li className={"alert"}>상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서 가능합니다.</li>
             </ul>
 
             {/*주문박스*/}
@@ -266,7 +270,7 @@ const OrderSheetViewer = () => {
                                 <td className="quantity">{item.quantity}</td>
                                 <td className="mileage" style={{fontSize: "11px"}}>
                                     <img src="//img.echosting.cafe24.com/design/common/icon_cash.gif"/>
-                                    {(item.price / 100).toLocaleString()}원
+                                    {(item.price * item.quantity / 100).toLocaleString() }원
                                 </td>
                                 <td className="delivery" style={{fontSize: "11px"}}>
                                     기본배송
@@ -410,9 +414,9 @@ const OrderSheetViewer = () => {
             <br/>
 
             <ul className="controlInfo">
-                <li>(주의!) 실제 상품 구매가 아닌 모의 결제가 진행됩니다.</li>
+                <li className={"alert2"}>실제 상품 구매가 아닌 테스트 결제가 진행됩니다.</li>
                 <li>실제 상품금액에 관계 없이 결제 요청 가능한 최소 금액인 1000원이 테스트 결제 됩니다.</li>
-                <li>결제 금액은 매일 자정 전(23:00~23:50)에 자동적으로 일괄 결제 취소됩니다.</li>
+                <li>결제 금액은 매일 자정 전(23:00~23:50)에 자동으로 일괄 결제 취소되어 환불됩니다.</li>
             </ul>
 
             {/*결제버튼*/}
