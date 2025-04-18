@@ -40,12 +40,11 @@ const LoginFormViewer = () => {
                 withCredentials: true,
             });
             if (response.status === 200) {
-                alert('로그인 성공! ');
+                alert('로그인 성공!');
                 localStorage.setItem("access_token", response.data.accessToken);
 
                 // 만료시간 4시간 (액세스 토큰과 동일)
                 let tokenExpiration = new Date().getTime() + 1000 * 60 * 60 * 4;
-
                 localStorage.setItem("expiration", tokenExpiration)
 
                 console.log(response.headers.get('Access-Control-Allow-Origin'));

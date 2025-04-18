@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
+import orderImg from "../../assets/img_step3.png";
 const OrderListViewer = () => {
     const nav = useNavigate();
     const [orderList, setOrderList] = useState(null);
@@ -86,6 +87,10 @@ const OrderListViewer = () => {
                 <h2>주문조회</h2>
             </div>
 
+            <p className="orderStep">
+                <img src={orderImg} alt=""/>
+            </p>
+
             <div className="orderhistory">
                 <ul className="menu">
                     <li className="tab_class selected">
@@ -158,7 +163,10 @@ const OrderListViewer = () => {
                                 <td rowSpan={index === 0 ? orderList.orderItems.length : 0} scope="col"
                                     style={{fontSize: "9px"}}
                                     className={index === 0 ? "service" : "displaynone"}>
-                                    <button onClick={()=>{refund(orderList.merchantUid)}}>환불하기</button>
+                                    <button onClick={() => {
+                                        refund(orderList.merchantUid)
+                                    }}>환불하기
+                                    </button>
                                 </td>
                             </tr>
                         ))

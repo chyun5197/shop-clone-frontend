@@ -1,4 +1,3 @@
-import logo from '../assets/logo.jpg';
 import './Header.css'
 import {categroy} from "../global/Category.js"
 import CategoryMenu from "./menubar/CategoryMenu.jsx";
@@ -8,7 +7,7 @@ import {PrimaryDispatchContext, PrimaryStateContext} from "../App.jsx";
 import axios from "axios";
 import {useCookies} from "react-cookie";
 import { PiUserCircleFill } from "react-icons/pi";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
     const cateKeys = Object.keys(categroy);
@@ -100,7 +99,7 @@ const Header = () => {
         }
     }
 
-    // 관심상품 이동
+    // 위시리스트 이동
     const onWishClick = () => {
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
@@ -134,10 +133,10 @@ const Header = () => {
                         className={"btn_check"+(complete ? " active" : "")}
                         onClick={()=>{complete?setComplete(false):setComplete(true)}}>구현된 페이지 보기
                     </button>
-                    <button className={"btn_grey"+(complete ? " active" : "")}
-                            onClick={()=>nav("/products/search")}>
-                        <FaSearch style={{verticalAlign:'sub'}} size='14' />
-                    </button>
+                    {/*<button className={"btn_grey"+(complete ? " active" : "")}*/}
+                    {/*        onClick={()=>nav("/products/search")}>*/}
+                    {/*    <FaSearch style={{verticalAlign:'sub'}} size='14' />*/}
+                    {/*</button>*/}
                     <button
                         className={"btn_grey"+(complete ? " active" : "")}
                         onClick={onMyShopClick}>
@@ -154,15 +153,30 @@ const Header = () => {
                     <a className={"isCompleted"+(complete ? " active" : "")} onClick={onOrderClick}>주문조회</a>
                 </div>
                 <div className="line1_right">
-                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={onWishClick}>wish</button>
-                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={onCartClick}>cart</button>
-                    <button className={"btn_grey"+(complete ? " active" : "")} onClick={()=>nav("/products/search")}>search</button>
+                    {/*위시리스트*/}
+                    <button className={"btn_grey" + (complete ? " active" : "")}
+                            style={{width:"30px"}}
+                            onClick={onWishClick}>
+                        <FaHeart style={{verticalAlign: 'sub'}} size='15'/>
+                    </button>
+                    {/*장바구니*/}
+                    <button className={"btn_grey" + (complete ? " active" : "")}
+                            style={{width:"30px"}}
+                            onClick={onCartClick}>
+                        <FaShoppingCart style={{verticalAlign: 'sub'}} size='15'/>
+                    </button>
+                    {/*검색*/}
+                    <button className={"btn_grey" + (complete ? " active" : "")}
+                            style={{width:"30px"}}
+                            onClick={() => nav("/products/search")}>
+                        <FaSearch style={{verticalAlign: 'sub'}} size='15'/>
+                    </button>
                 </div>
             </div>
             <div className="header_line2">
                 <img src="https://cdn.hyun-clone.shop/logo.jpg" onClick={onClickHome} alt=''></img>
 
-                {/*<li>Best</li>*/}
+                {/*카테고리별 조회*/}
                 {cateKeys.map((key, index) => (
                     <CategoryMenu cateKey={key} complete={complete} index={index} key={key}/>))}
 

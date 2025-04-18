@@ -128,7 +128,7 @@ const OrderSheetViewer = () => {
                 channelKey: "channel-key-4520d30d-e080-4edb-9caf-9589065008eb",
                 pay_method: "card",
                 merchant_uid: merchantId, // 쇼핑몰 주문번호
-                name: "쇼핑몰 테스트 결제(포트원V1)",
+                name: "쇼핑몰 프로젝트 결제(포트원V1)",
                 amount: 1000,
                 buyer_email: "chyun51@naver.com", // 형식 맞춰서 필수
                 buyer_name: "최현",
@@ -148,7 +148,6 @@ const OrderSheetViewer = () => {
                 // 결제 검증 및 결제 완료 처리(->스프링)
                 try {
                     const notified = await axios({
-                        // params.get("id"): productId
                         url: import.meta.env.VITE_API_URL + `/api/payment/complete`,
                         headers: {
                             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
@@ -170,7 +169,11 @@ const OrderSheetViewer = () => {
                         alert("결제 요청 금액이 잘못되어 결제가 취소되었습니다.")
                     }
                 } catch (error) {
-                    alert('결제 서버 에러');
+                    if(error.status === 429){
+                        alert("주문 요청한 상품의 재고가 부족합니다")
+                    }else{
+                        alert('결제 서버 에러');
+                    }
                 }
             },
         );

@@ -10,9 +10,12 @@ const OauthHandler = () => {
     const [params, setParams] = useSearchParams();
     useEffect(()=>{
         if(params.get("access_token")){
-            localStorage.setItem("access_token", params.get("access_token"));
-            primaryInfo.isLogin = true;
             alert("로그인 성공!")
+            localStorage.setItem("access_token", params.get("access_token"));
+            // 만료시간 4시간 (액세스 토큰과 동일)
+            let tokenExpiration = new Date().getTime() + 1000 * 60 * 60 * 4;
+            localStorage.setItem("expiration", tokenExpiration)
+            primaryInfo.isLogin = true;
         }else{
             alert("사용자 정보를 가져오지 못했습니다.")
         }

@@ -51,7 +51,7 @@
     color: white;
     font-weight: bold;
     font-size: 12px;
-    background: #023d86;
+    background: #2560a7;
     position: relative;
     line-height: 30px;
     overflow: hidden;
@@ -236,7 +236,18 @@
 
 }
 
+.Header .brand li:hover{
+    background-color: #023d86;
+}
+
 .Header .category:hover .brand{
     display: block;
 }
 
+.Header .cate_name:hover{
+    color: #023d86;
+    font-family: "Nanum Gothic ExtraBold";
+    font-size: 14.5px;
+    /*background-color: #5c667b;*/
+    /*color: white;*/
+}
