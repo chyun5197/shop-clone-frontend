@@ -2,12 +2,14 @@ import './Header.css'
 import {categroy} from "../global/Category.js"
 import CategoryMenu from "./menubar/CategoryMenu.jsx";
 import {useNavigate} from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
-import {PrimaryDispatchContext, PrimaryStateContext} from "../App.jsx";
+import React, {useContext, useEffect, useState, useRef} from "react";
+import {PrimaryStateContext} from "../App.jsx";
 import axios from "axios";
 import {useCookies} from "react-cookie";
 import { PiUserCircleFill } from "react-icons/pi";
 import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
+import Chat from "./Chat.jsx";
+import ReactDOM from "react-dom/client";
 
 const Header = () => {
     const cateKeys = Object.keys(categroy);
@@ -83,45 +85,136 @@ const Header = () => {
     const onCartClick = () =>{
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-        }else{
-            window.scrollTo(0, 0);
-            nav('/myshop/cart');
+            return
         }
+
+        window.scrollTo(0, 0);
+        nav('/myshop/cart');
     }
 
     // 주문조회 이동
     const onOrderClick = () =>{
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-        }else{
-            window.scrollTo(0, 0);
-            nav("/myshop/order/list")
+            return
         }
+
+        window.scrollTo(0, 0);
+        nav("/myshop/order/list")
     }
 
     // 위시리스트 이동
     const onWishClick = () => {
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-        }else{
-            window.scrollTo(0, 0);
-            nav('/myshop/wishlist');
+            return
         }
+
+        window.scrollTo(0, 0);
+        nav('/myshop/wishlist');
     }
 
     const onMyShopClick = () => {
         if (!primaryInfo.isLogin) {
             alert('로그인을 해주세요')
-        }else{
-            window.scrollTo(0, 0);
-            nav('/myshop');
+            return
         }
+
+        window.scrollTo(0, 0);
+        nav('/myshop');
     }
 
     const [complete, setComplete] = useState(false);
     const handleOpenNewTab = (url) => {
         window.open(url, "_blank", "noopener, noreferrer");
     };
+
+    const newWindowRef = useRef(null);
+    const openChatWindow = async () => {
+        // 로그인해야 접근 가능
+        if (!primaryInfo.isLogin) {
+            alert('로그인을 해주세요')
+            return
+        }
+
+        let memberId, chatRoomId, role;
+        try {
+            const response = await axios.get(
+                import.meta.env.VITE_API_URL + '/api/chat',
+                {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                },
+            );
+            memberId = response.data.memberId;
+            chatRoomId = response.data.chatRoomId;
+            role = response.data.role;
+        } catch (error) {
+            alert(error.message);
+            return;
+        }
+
+        // 상담사이면 채팅방 리스트로 이동
+        if (role === 'COUNSELOR'){
+            nav(`/chat/list/${memberId}`);
+            return
+        }
+        // 고객이면 채팅창 생성 유무 확인 후 채팅방 실행
+        if(chatRoomId === -1){ // 채팅방 없으면 새로 생성
+            try {
+                const response = await axios.post(
+                    import.meta.env.VITE_API_URL + '/api/chat',
+                    {},
+                    {
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                        }
+                    },
+                );
+                chatRoomId = response.data.chatRoomId;
+            } catch (error) {
+                alert(error.message);
+                return;
+            }
+        }
+        // 새 창에서 채팅창 실행
+        const width = 600;
+        const height = 700;
+        const left = window.screenX + (window.innerWidth - width) / 2;
+        const top = window.screenY + (window.innerHeight - height) / 2;
+        const newWindow = window.open(
+            "",
+            "_blank",
+            `width=${width},height=${height},left=${left},top=${top}`
+        );
+        // const newWindow = window.open("", "_blank", "noopene");
+        if (!newWindow) return;
+
+        newWindow.document.title = "새 창";
+        // 새 창의 HTML 구조 초기화
+        newWindow.document.body.innerHTML = '<div id="chat-root"></div>';
+
+        // React 컴포넌트 렌더링
+        const root = ReactDOM.createRoot(newWindow.document.getElementById("chat-root"));
+        root.render(<Chat memberId={memberId} chatRoomId={chatRoomId} role={role} />);
+
+        // 창 닫힐 때 언마운트 처리
+        newWindow.onunload = () => {
+            root.unmount();
+        };
+        // 새 창 참조 저장
+        newWindowRef.current = newWindow;
+    }
+    useEffect(() => {
+        // 컴포넌트 언마운트 시 창 닫기
+        return () => {
+            if (newWindowRef.current) {
+                newWindowRef.current.close();
+                newWindowRef.current = null;
+            }
+        };
+    }, []);
 
     return (
         <header className="Header">
@@ -186,7 +279,9 @@ const Header = () => {
                     베스트</button>
                 </li>
                 <li className="board">
-                    <button className='btn_blue'>게시판1</button>
+                    <button className='btn_blue'
+                            onClick={openChatWindow}
+                    >채팅상담</button>
                 </li>
                 <li className="board">
                     <button className='btn_blue'>게시판2</button>

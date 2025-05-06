@@ -19,7 +19,6 @@ const ProductBestViewer = () => {
                     import.meta.env.VITE_API_URL + '/api/products/best'
                 );
                 setProductList(response.data);
-                console.log("rend");
             }catch(error){
                 setError(error);
             }

@@ -17,6 +17,8 @@ import Register from "./pages/account/Register.jsx";
 import OauthHandler from "./pages/OauthHandler.jsx";
 import OrderSheet from "./pages/myInfo/OrderSheet.jsx";
 import OrderList from "./pages/myInfo/OrderList.jsx";
+import Chat from "./components/Chat.jsx";
+import ChatRoomList from "./components/ChatRoomList.jsx";
 
 export const PrimaryStateContext = createContext();
 export const PrimaryDispatchContext = createContext();
@@ -99,6 +101,8 @@ function App() {
                                         <Route path="/login-form" element={<LoginForm/>}/>
                                         <Route path="/register" element={<Register/>}/>
                                         <Route path="/oauth/success" element={<OauthHandler/>}/>
+                                        <Route path="/chat/list/:id" element={<ChatRoomList/>}/>
+                                        {/*<Route path="/chat" element={<Chat/>}/>*/}
                                         <Route path="*" element={<Notfound/>}/>
                                     </Routes>
                                 </div>
