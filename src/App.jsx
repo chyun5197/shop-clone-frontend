@@ -76,43 +76,43 @@ function App() {
         })
     }, [])
 
-    // return <div><h1>점검중</h1></div>
+    return <div><h1>점검중</h1></div>
 
-    return (
-        <>
-            <div className="all_wrap">
-                <CookiesProvider>
-                    <PrimaryStateContext.Provider value={data}>
-                        <PrimaryDispatchContext.Provider value={{onBranding, onLocate}}>
-                            <Header/>
-                            <div id="content_wrap">
-                                <div id="container">
-                                    <Routes>
-                                        <Route path="/" element={<Home/>}/>
-                                        <Route path="/myshop/wishlist" element={<Wishlist/>}/>
-                                        <Route path="/myshop" element={<MyPage/>}/>
-                                        <Route path="/myshop/cart" element={<Cart/>}/>
-                                        <Route path="/myshop/order/sheet" element={<OrderSheet/>}/>
-                                        <Route path="/myshop/order/list" element={<OrderList/>}/>
-                                        <Route path="/products/list" element={<ProductList/>}/>
-                                        <Route path="/products/detail" element={<ProductDetail/>}/>
-                                        <Route path="/products/search" element={<ProductSearch/>}/>
-                                        <Route path="/products/best" element={<ProductBest/>}/>
-                                        <Route path="/login-form" element={<LoginForm/>}/>
-                                        <Route path="/register" element={<Register/>}/>
-                                        <Route path="/oauth/success" element={<OauthHandler/>}/>
-                                        <Route path="/chat/list/:id" element={<ChatRoomList/>}/>
-                                        {/*<Route path="/chat" element={<Chat/>}/>*/}
-                                        <Route path="*" element={<Notfound/>}/>
-                                    </Routes>
-                                </div>
-                            </div>
-                        </PrimaryDispatchContext.Provider>
-                    </PrimaryStateContext.Provider>
-                </CookiesProvider>
-            </div>
-        </>
-    )
+    // return (
+    //     <>
+    //         <div className="all_wrap">
+    //             <CookiesProvider>
+    //                 <PrimaryStateContext.Provider value={data}>
+    //                     <PrimaryDispatchContext.Provider value={{onBranding, onLocate}}>
+    //                         <Header/>
+    //                         <div id="content_wrap">
+    //                             <div id="container">
+    //                                 <Routes>
+    //                                     <Route path="/" element={<Home/>}/>
+    //                                     <Route path="/myshop/wishlist" element={<Wishlist/>}/>
+    //                                     <Route path="/myshop" element={<MyPage/>}/>
+    //                                     <Route path="/myshop/cart" element={<Cart/>}/>
+    //                                     <Route path="/myshop/order/sheet" element={<OrderSheet/>}/>
+    //                                     <Route path="/myshop/order/list" element={<OrderList/>}/>
+    //                                     <Route path="/products/list" element={<ProductList/>}/>
+    //                                     <Route path="/products/detail" element={<ProductDetail/>}/>
+    //                                     <Route path="/products/search" element={<ProductSearch/>}/>
+    //                                     <Route path="/products/best" element={<ProductBest/>}/>
+    //                                     <Route path="/login-form" element={<LoginForm/>}/>
+    //                                     <Route path="/register" element={<Register/>}/>
+    //                                     <Route path="/oauth/success" element={<OauthHandler/>}/>
+    //                                     <Route path="/chat/list/:id" element={<ChatRoomList/>}/>
+    //                                     {/*<Route path="/chat" element={<Chat/>}/>*/}
+    //                                     <Route path="*" element={<Notfound/>}/>
+    //                                 </Routes>
+    //                             </div>
+    //                         </div>
+    //                     </PrimaryDispatchContext.Provider>
+    //                 </PrimaryStateContext.Provider>
+    //             </CookiesProvider>
+    //         </div>
+    //     </>
+    // )
 }
 
 export default App
