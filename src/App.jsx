@@ -77,7 +77,7 @@ function App() {
     }, [])
 
     return <div><h1>점검중</h1></div>
-
+//
     // return (
     //     <>
     //         <div className="all_wrap">
